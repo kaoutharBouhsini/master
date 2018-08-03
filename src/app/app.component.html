@@ -1,41 +1,41 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
   <div *ngIf="!token">
-  <h1>
-    Login
-  </h1>
-  <form (ngSubmit) = "onSubmit()">
+    <h1>
+      Login
+    </h1>
+    <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
       <div>
         <label>Username : </label>
-        <input type = "text" [(ngModel)] = "user.username" name="login">
+        <mat-form-field>
+          <input aria-label="Username" type="text" matInput [formControl]="input" name="login" required>
+        </mat-form-field>
       </div>
-        <br>
+      <br>
       <div>
-          <label>Password : </label>
-          <input type = "password" [(ngModel)] = "user.password" name="password">
+        <label>Password : </label>
+        <mat-form-field>
+          <input aria-label="Password" type="password" matInput [formControl]="password" name="pass" required>
+        </mat-form-field>
+        <br>
+        <mat-checkbox>Remember me !</mat-checkbox>
       </div>
-
-        <button type="submit">Login </button>
-  </form>
-</div>
-
-
-  <button (click) = "gets()"> Get taches</button>
-  <button (click) = "add()"> Add tache</button>
-  <button (click) = "get(12)"> Get tache</button>
-  <button (click) = "delete(12)"> Suppr tache</button>
-  <button (click) = "update(11)"> Update tache</button>
-
-
-
+      {{loginForm.form.valid}}
+      <button type="submit" [disabled]="!loginForm.form.valid">Login</button>
+    </form>
+  </div>
+  <button (click)="gets()"> Get taches</button>
+  <button (click)="add()"> Add tache</button>
+  <button (click)="get(taches[0].id)"> Get tache</button>
+  <button (click)="delete(12)"> Suppr tache</button>
+  <button (click)="update(11)"> Update tache</button>
 
   <div>
     <ul>
-      <li *ngFor = "let sect of taches">
+      <li *ngFor="let sect of taches">
         <p>{{sect | json}}</p>
       </li>
     </ul>
   </div>
 
 </div>
-

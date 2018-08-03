@@ -4,6 +4,7 @@ import { LoginService } from './services/login.service';
 import { HttpResponse } from '@angular/common/http';
 import { TachesService } from './services/taches.service';
 import { Tache } from './beans/taches';
+import { FormControl } from '../../node_modules/@angular/forms';
 
 
 @Component({
@@ -17,6 +18,9 @@ export class AppComponent implements OnInit {
   taches: Tache[];
   token: string;
 
+  input = new FormControl();;
+  password = new FormControl();;
+
   constructor(private loginService: LoginService, private tachesServ: TachesService) { }
 
   ngOnInit() {
@@ -25,6 +29,9 @@ export class AppComponent implements OnInit {
   }
 
   onSubmit() {
+    this.user.username = this.input.value;
+    this.user.password = this.password.value;
+    console.log(this.user);
     this.loginService.login(this.user).subscribe(
       (resp: HttpResponse<any>) => localStorage.setItem('token', resp.headers.get('Authorization')));
   }
