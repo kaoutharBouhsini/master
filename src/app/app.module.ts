@@ -3,15 +3,25 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ClientComponent } from './client/client.component';
+import { ClientComponent } from './home/client/client.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCheckboxModule, MatToolbarModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule, MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatAutocompleteModule, MatInputModule} from '@angular/material';
+import {MatButtonModule, MatCheckboxModule, MatToolbarModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule, MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatAutocompleteModule, MatInputModule, MatChipsModule, MatSelect, MatSelectModule} from '@angular/material';
 import { LayoutModule } from '@angular/cdk/layout';
+import { HomeComponent } from './home/home.component';
+import { AdminComponent } from './home/admin/admin.component';
+import { CollaborateurComponent } from './home/collaborateur/collaborateur.component';
+import { ProjetComponent } from './home/projet/projet.component';
+import { ClientUpdateComponent } from './home/client/client-update/client-update.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ClientComponent
+    ClientComponent,
+    HomeComponent,
+    AdminComponent,
+    CollaborateurComponent,
+    ProjetComponent,
+    ClientUpdateComponent
     ],
   imports: [
     BrowserModule,
@@ -35,7 +45,9 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatButtonModule,
     MatFormFieldModule,
     MatAutocompleteModule,
-    MatInputModule
+    MatInputModule,
+    MatChipsModule,
+    MatSelectModule
     
   ],
   providers: [],

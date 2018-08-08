@@ -4,7 +4,7 @@ import { LoginService } from './services/login.service';
 import { HttpResponse } from '@angular/common/http';
 import { TachesService } from './services/taches.service';
 import { Tache } from './beans/taches';
-import { FormControl } from '../../node_modules/@angular/forms';
+import { FormControl, Validators } from '../../node_modules/@angular/forms';
 
 
 @Component({
@@ -18,8 +18,8 @@ export class AppComponent implements OnInit {
   taches: Tache[];
   token: string;
 
-  input = new FormControl();;
-  password = new FormControl();;
+  input = new FormControl('', [Validators.required]);
+  password = new FormControl();
 
   constructor(private loginService: LoginService, private tachesServ: TachesService) { }
 

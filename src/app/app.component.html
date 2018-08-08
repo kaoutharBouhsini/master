@@ -1,27 +1,32 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <div *ngIf="!token">
+<div class = "login" >
+  <!-- <div *ngIf="!token">
     <h1>
       Login
     </h1>
     <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
       <div>
-        <label>Username : </label>
         <mat-form-field>
-          <input aria-label="Username" type="text" matInput [formControl]="input" name="login" required>
+          <mat-label>Username</mat-label>
+          <input aria-label="Username" #login type="text" matInput [formControl]="input" name="login" required>
         </mat-form-field>
       </div>
       <br>
       <div>
-        <label>Password : </label>
-        <mat-form-field>
-          <input aria-label="Password" type="password" matInput [formControl]="password" name="pass" required>
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input aria-label="Password" #pass type="password" matInput [formControl]="password" name="pass" required>
         </mat-form-field>
         <br>
+        <mat-chip-list placeholder="List">
+          <mat-chip>Papadum</mat-chip>
+          <mat-chip>Naan</mat-chip>
+          <mat-chip>Dal</mat-chip>
+        </mat-chip-list>
         <mat-checkbox>Remember me !</mat-checkbox>
       </div>
       {{loginForm.form.valid}}
-      <button type="submit" [disabled]="!loginForm.form.valid">Login</button>
+      <button type="submit" [disabled]="!pass.value?.length || !login.value?.length">Login</button>
     </form>
   </div>
   <button (click)="gets()"> Get taches</button>
@@ -37,5 +42,8 @@
       </li>
     </ul>
   </div>
+
+-->
+<app-client></app-client>
 
 </div>

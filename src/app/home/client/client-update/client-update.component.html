@@ -1,0 +1,33 @@
+<h2>Update Client</h2>
+<form (ngSubmit)="update(client.id)">
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input type="text" matInput [formControl]="CltName"  required>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label>City</mat-label>
+    <input type="text" matInput [formControl]="city"  required>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label>Country</mat-label>
+    <input type="text" matInput [formControl]="country" required>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label>Phone</mat-label>
+    <input type="phone" matInput [formControl]="phone" required>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label>Secteur d'Activité</mat-label>
+    <mat-select [formControl]="secteurCtrl"  required>
+      <mat-option *ngFor="let secteur of secteurs$|async" [value]="secteur.id">
+        {{secteur.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+  <button type="submit">Update</button>
+</form>

@@ -1,0 +1,8 @@
+.login{
+    background-image: radial-gradient(circle, #213f99,#21367C,#202c5f );
+    height: 100vh;
+    width: 100%;
+    background-position-y: -25%;
+    background-size: 100%
+}
+

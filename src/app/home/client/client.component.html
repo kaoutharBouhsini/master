@@ -1,0 +1,60 @@
+<h2>
+  Listing</h2>
+<table border="1" style="margin-left : 35%">
+  <thead>
+    <th>Name</th>
+    <th>City</th>
+    <th>Country</th>
+    <th>Phone</th>
+    <th>Secteur d'Activité</th>
+    <th>Opération</th>
+  </thead>
+  <tr *ngFor="let client of clients">
+    <td>{{client.name}}</td>
+    <td>{{client.city}}</td>
+    <td>{{client.country}}</td>
+    <td>{{client.phone}}</td>
+    <td>{{client.secteur.name}}</td>
+    <td>
+      <button (click)="delete(client.id)">Delete</button>
+    </td>
+    <td>
+      <button (click)="select(client); up = true">Update</button>
+    </td>
+  </tr>
+</table>
+<h2>Add Client</h2>
+<form (ngSubmit)="add()" style="color: #ffffff" >
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input type="text" matInput [formControl]="CltName" required>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label>City</mat-label>
+    <input type="text" matInput [formControl]="city" required>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label>Country</mat-label>
+    <input type="text" matInput [formControl]="country" required>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label>Phone</mat-label>
+    <input type="phone" matInput [formControl]="phone" required>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label>Secteur d'Activité</mat-label>
+    <mat-select [formControl]="secteurCtrl" required>
+      <mat-option *ngFor="let secteur of secteurs$|async" [value]="secteur.id">
+        {{secteur.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+  <button type="submit">Ajouter</button>
+</form>
+
+<app-client-update *ngIf="up" [client]="selectedClient" (updated)="gets()"></app-client-update>

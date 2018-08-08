@@ -1,3 +1,4 @@
+import { SearchCreteria } from './../beans/search-creteria';
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { Observable} from 'rxjs';
@@ -15,6 +16,15 @@ export class ClientService {
   gets():Observable<Client[]>
   {
     return this.http.get<Client[]>(`${Globals.url}/Client`, Globals.httpOptions).pipe(
+      retry(2),
+      catchError(Globals.handleError)
+    );
+  }
+
+  
+  search(searchs : SearchCreteria[]):Observable<Client[]>
+  {
+    return this.http.post<Client[]>(`${Globals.url}/Client/findwithcritaria`,searchs, Globals.httpOptions).pipe(
       retry(2),
       catchError(Globals.handleError)
     );
@@ -47,6 +57,7 @@ export class ClientService {
 
   update(id: number, client: Client):Observable<Client>
   {
+    console.log('update method : '+ client);
     return this.http.put<Client>(`${Globals.url}/Client/${id}`,client, Globals.httpOptions).pipe(
       retry(2),
       catchError(Globals.handleError)
