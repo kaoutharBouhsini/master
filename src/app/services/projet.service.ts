@@ -1,3 +1,4 @@
+import { SearchCreteria } from './../beans/search-creteria';
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { Observable} from 'rxjs';
@@ -18,7 +19,12 @@ export class ProjetService{
       catchError(Globals.handleError)
     );
   }
-
+  search(searchs: SearchCreteria[]): Observable<Projet[]> {
+    return this.http.post<Projet[]>(`${Globals.url}/Projet/findwithcritaria`, searchs, Globals.httpOptions).pipe(
+      retry(2),
+      catchError(Globals.handleError)
+    );
+  }
   add(projet: Projet) : Observable<Projet>
   {
     return this.http.post<Projet>(`${Globals.url}/Projet`,projet , Globals.httpOptions).pipe(

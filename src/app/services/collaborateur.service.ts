@@ -4,6 +4,7 @@ import { Observable} from 'rxjs';
 import { Collaborateur } from '../beans/collaborateur';
 import { Globals } from '../globals';
 import {catchError, retry} from 'rxjs/operators';
+import { SearchCreteria } from '../beans/search-creteria';
 @Injectable({
   providedIn: 'root'
 })
@@ -18,7 +19,12 @@ export class CollaborateurService{
       catchError(Globals.handleError)
     );
   }
-
+  search(searchs: SearchCreteria[]): Observable<Collaborateur[]> {
+    return this.http.post<Collaborateur[]>(`${Globals.url}/Collaborateur/findwithcritaria`, searchs, Globals.httpOptions).pipe(
+      retry(2),
+      catchError(Globals.handleError)
+    );
+  }
   add(collaborateur: Collaborateur) : Observable<Collaborateur>
   {
     return this.http.post<Collaborateur>(`${Globals.url}/Collaborateur`,collaborateur , Globals.httpOptions).pipe(
