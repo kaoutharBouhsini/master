@@ -1,3 +1,4 @@
+import {  } from 'rxjs/Rx';
 import { Observable } from 'rxjs';
 import { SecteurService } from './../../services/secteur.service';
 import { SearchCreteria } from './../../beans/search-creteria';
@@ -71,6 +72,19 @@ export class ClientComponent implements OnInit {
   select(client: Client) {
     this.selectedClient = client;
     this.update = true;
+  }
+
+  download(id : number)
+  {
+    this.clientService.download(id).subscribe( (data : Response) => this.downloadFile(data),
+    error => console.log("Error downloading the file."),
+    () => console.info("OK"));
+  }
+
+  downloadFile(data: Response){
+    var blob = new Blob([data], { type: 'text/pdf' });
+    var url= window.URL.createObjectURL(blob);
+    window.open(url);
   }
 
 }

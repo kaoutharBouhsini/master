@@ -63,4 +63,11 @@ export class ClientService {
       catchError(Globals.handleError)
     );
   }
+
+  download(id : number){
+    return this.http.get(`${Globals.url}/Client/pdf/${id}`).pipe(
+      retry(2),
+      catchError(Globals.handleError)
+    );
+  }
 }

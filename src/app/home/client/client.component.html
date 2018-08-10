@@ -67,12 +67,16 @@
     </mat-select>
   </mat-form-field>
 
-      <mat-form-field>
-        <mat-label>Search</mat-label>
-        <input type="text" #search matInput placeholder="search!" #recherche name="recherche">
-      </mat-form-field>
-      <br>
-      <button type="submit" [disabled]="!searchForm.valid" mat-flat-button>Search</button>
+  <mat-form-field>
+    <mat-label>Search</mat-label>
+    <input type="text" #search matInput placeholder="search!" #recherche name="recherche">
+  </mat-form-field>
+  <br>
+  <button type="submit" [disabled]="!searchForm.valid" mat-flat-button>Search</button>
 </form>
+
+
+<br>
+<button type="button" (click)="download(33)" mat-flat-button>Download File</button>
 
 <!-- <app-client-update *ngIf="update" [client]="selectedClient" (updated)="gets()"></app-client-update> -->
