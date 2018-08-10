@@ -1,3 +1,86 @@
-<p>
-  collaborateur works!
-</p>
+
+<h2>
+  Listing</h2>
+<table border="1" style="margin-left : 35%">
+  <thead>
+    <th>Photo</th>
+    <th>Nom</th>
+    <th>Prénom</th>
+    <th>statut</th>
+    <th>Opération</th>
+  </thead>
+  <tr *ngFor="let collaborateur of collaborateurs">
+    <td> 
+      <img *ngIf="!collaborateur.picture" src="https://www.cmcautomobiles.co.tz/cmc/wp-content/uploads/2017/06/index.png" class = "userImage"> 
+      <img *ngIf="collaborateur.picture" src="collaborateur.picture" class = "userImage">
+    </td>
+    <td>{{collaborateur.lastname}}</td>
+    <td>{{collaborateur.firstname}}</td>
+    <td>{{collaborateur.statutCollaborateur}}</td>
+    <td>
+      <button (click)="delete(collaborateur.id)">Delete</button>
+      <button (click)="select(collaborateur)">Update</button>
+    </td>
+  </tr>
+</table>
+
+<!--
+<h2>Add collaborateur</h2>
+<form (ngSubmit)="add()" style="color: #ffffff" >
+  <mat-form-field>
+    <mat-label>Firstname</mat-label>
+  <input type="text" matInput [(ngModel)]="insertCollab.firstname" name="firstname" required>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label>Lastname</mat-label>
+    <input type="text" matInput [(ngModel)]="insertCollab.lastname" name="lastname" required>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+      <mat-label>Statut</mat-label>
+      <mat-select  [(ngModel)]="insertCollab.statutCollaborateur" name="statut">
+        <mat-option value = "actif">actif</mat-option>
+        <mat-option value = "inactif">inactif</mat-option>
+      </mat-select>
+    </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label>Sexe</mat-label>
+    <mat-select  [(ngModel)]="insertCollab.sexe" name="sexe">
+      <mat-option value = "homme">homme</mat-option>
+      <mat-option value = "femme">femme</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+      <mat-label>Situation familiale</mat-label>
+      <mat-select  [(ngModel)]="insertCollab.situationFamiliale" name="situationFamiliale">
+        <mat-option value = "celibataire">Célibataire</mat-option>
+        <mat-option value = "marie">marié</mat-option>
+      </mat-select>
+    </mat-form-field>
+  <br>
+  <button type="submit">Ajouter</button>
+</form>
+
+<form (ngSubmit)="addCreteria(champs.value, recherche.value)" #searchForm="ngForm">
+
+    <mat-form-field>
+      <mat-select #champs required>
+        <mat-option value="lastname">Name</mat-option>
+        <mat-option value="fonctionRessourcesHumaines.name">Fonction</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+        <mat-form-field>
+          <mat-label>Search</mat-label>
+          <input type="text"  matInput placeholder="search!" #recherche name="recherche" required>
+        </mat-form-field>
+        <br>
+        <button type="submit" [disabled]="!searchForm.valid" mat-flat-button>Search</button>
+  </form> 
+
+-->
+ 
+   <app-collaborateur-update *ngIf="update" [collaborateur]="selectedCollaborateur" (updated)="gets()"></app-collaborateur-update> 

@@ -1,7 +1,7 @@
 export class SearchCreteria {
 
-    key : string;
-    operation: string;
-    value: string;
+    constructor(public key : string,
+        public operation: string,
+        public value: string){}
 
 }

@@ -1,3 +1,4 @@
+<!--
 <h2>
   Listing</h2>
 <table border="1" style="margin-left : 35%">
@@ -19,7 +20,7 @@
       <button (click)="delete(client.id)">Delete</button>
     </td>
     <td>
-      <button (click)="select(client); up = true">Update</button>
+      <button (click)="select(client)">Update</button>
     </td>
   </tr>
 </table>
@@ -56,5 +57,22 @@
   <br>
   <button type="submit">Ajouter</button>
 </form>
+-->
+<form (ngSubmit)="addCreteria(champs.value, recherche.value)" #searchForm="ngForm">
 
-<app-client-update *ngIf="up" [client]="selectedClient" (updated)="gets()"></app-client-update>
+  <mat-form-field>
+    <mat-select #champs>
+      <mat-option value="name">Name</mat-option>
+      <mat-option value="secteur.name">Secteur d'activité</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Search</mat-label>
+        <input type="text" #search matInput placeholder="search!" #recherche name="recherche">
+      </mat-form-field>
+      <br>
+      <button type="submit" [disabled]="!searchForm.valid" mat-flat-button>Search</button>
+</form>
+
+<!-- <app-client-update *ngIf="update" [client]="selectedClient" (updated)="gets()"></app-client-update> -->

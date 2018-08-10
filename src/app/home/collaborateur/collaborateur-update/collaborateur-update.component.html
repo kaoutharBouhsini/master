@@ -1,0 +1,38 @@
+<h2>Update Collaborateur</h2>
+<form (ngSubmit)="update(updCollaborateur.id)" #updateForm="ngForm">
+  <mat-form-field>
+    <mat-label>Firstname</mat-label>
+    <input type="text" matInput [(ngModel)]="updCollaborateur.firstname" name="firstname" required>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label>Lastname</mat-label>
+    <input type="text" matInput [(ngModel)]="updCollaborateur.lastname" name="lastname" required>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label>Statut</mat-label>
+    <mat-select [(ngModel)]="updCollaborateur.statutCollaborateur" name="statut">
+      <mat-option value="actif">actif</mat-option>
+      <mat-option value="inactif">inactif</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label>Sexe</mat-label>
+    <mat-select [(ngModel)]="updCollaborateur.sexe" name="sexe">
+      <mat-option value="homme">homme</mat-option>
+      <mat-option value="femme">femme</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label>Situation familiale</mat-label>
+    <mat-select [(ngModel)]="updCollaborateur.situationFamiliale" name="situationFamiliale">
+      <mat-option value="celibataire">Célibataire</mat-option>
+      <mat-option value="marié">marié</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+  <button type="submit" [disabled]="!updateForm.form.valid">Update</button>
+</form>

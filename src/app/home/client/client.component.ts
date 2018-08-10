@@ -22,9 +22,10 @@ export class ClientComponent implements OnInit {
   country = new FormControl();
   phone = new FormControl();
   secteurCtrl = new FormControl();
+  searchCreterias : SearchCreteria[] = [];
 
   secteurs$: Observable<SecteurActivites[]>;
-
+  update = false;
   ngOnInit() {
     this.clients = [];
     this.gets();
@@ -61,12 +62,15 @@ export class ClientComponent implements OnInit {
     this.clientService.delete(id).subscribe(() => this.gets());
   }
 
-  search(searchCreterias: SearchCreteria[]) {
-    this.clientService.search(searchCreterias).subscribe(clients => this.clients = clients);
+  addCreteria(key:string, value:string) {
+    this.searchCreterias.push(new SearchCreteria(key, ':' , value));
+    console.log(this.searchCreterias);
+    this.clientService.search(this.searchCreterias).subscribe(clients => console.log(clients));
   }
 
   select(client: Client) {
     this.selectedClient = client;
+    this.update = true;
   }
 
 }

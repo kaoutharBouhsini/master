@@ -12,6 +12,7 @@ import { AdminComponent } from './home/admin/admin.component';
 import { CollaborateurComponent } from './home/collaborateur/collaborateur.component';
 import { ProjetComponent } from './home/projet/projet.component';
 import { ClientUpdateComponent } from './home/client/client-update/client-update.component';
+import { CollaborateurUpdateComponent } from './home/collaborateur/collaborateur-update/collaborateur-update.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ClientUpdateComponent } from './home/client/client-update/client-update
     AdminComponent,
     CollaborateurComponent,
     ProjetComponent,
-    ClientUpdateComponent
+    ClientUpdateComponent,
+    CollaborateurUpdateComponent
     ],
   imports: [
     BrowserModule,
