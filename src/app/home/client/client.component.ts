@@ -1,4 +1,8 @@
-import {  } from 'rxjs/Rx';
+import { FileDownloader } from './../../Utils/file-downloader';
+import { saveAs } from 'file-saver/FileSaver';
+import { PDFDocument } from './../../beans/pdfdocument';
+import { HttpResponse } from '@angular/common/http';
+import  'rxjs/Rx';
 import { Observable } from 'rxjs';
 import { SecteurService } from './../../services/secteur.service';
 import { SearchCreteria } from './../../beans/search-creteria';
@@ -74,17 +78,9 @@ export class ClientComponent implements OnInit {
     this.update = true;
   }
 
-  download(id : number)
-  {
-    this.clientService.download(id).subscribe( (data : Response) => this.downloadFile(data),
+  download(id : number){
+    this.clientService.download(id).subscribe( (pdfFile : PDFDocument) => FileDownloader.downloadFile(pdfFile),
     error => console.log("Error downloading the file."),
     () => console.info("OK"));
   }
-
-  downloadFile(data: Response){
-    var blob = new Blob([data], { type: 'text/pdf' });
-    var url= window.URL.createObjectURL(blob);
-    window.open(url);
-  }
-
 }

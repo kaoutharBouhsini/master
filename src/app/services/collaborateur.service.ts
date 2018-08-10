@@ -56,5 +56,12 @@ export class CollaborateurService{
       catchError(Globals.handleError)
     );
   }
+  
+  download(id : number){
+    return this.http.get(`${Globals.url}/Collaborateur/pdf/${id}`, Globals.httpOptions).pipe(
+      retry(2),
+      catchError(Globals.handleError)
+    );
+  }
 
 }

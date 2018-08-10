@@ -1,8 +1,10 @@
+import { FileDownloader } from './../../Utils/file-downloader';
 import { SearchCreteria } from './../../beans/search-creteria';
 import { CollaborateurService } from './../../services/collaborateur.service';
 import { Collaborateur } from './../../beans/collaborateur';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '../../../../node_modules/@angular/forms';
+import { PDFDocument } from '../../beans/pdfdocument';
 
 @Component({
   selector: 'app-collaborateur',
@@ -55,6 +57,12 @@ export class CollaborateurComponent implements OnInit {
   select(Collaborateur: Collaborateur) {
     this.selectedCollaborateur = Collaborateur;
     this.update = true;
+  }
+
+  download(id : number){
+    this.collaborateurService.download(id).subscribe( (pdfFile : PDFDocument) => FileDownloader.downloadFile(pdfFile),
+    error => console.log("Error downloading the file."),
+    () => console.info("OK"));
   }
 
 }

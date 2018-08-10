@@ -1,3 +1,4 @@
+import { HttpHeaders } from '@angular/common/http';
 import { SearchCreteria } from './../beans/search-creteria';
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
@@ -62,10 +63,11 @@ export class ClientService {
       retry(2),
       catchError(Globals.handleError)
     );
+    
   }
 
   download(id : number){
-    return this.http.get(`${Globals.url}/Client/pdf/${id}`).pipe(
+    return this.http.get(`${Globals.url}/Client/pdf/${id}`, Globals.httpOptions).pipe(
       retry(2),
       catchError(Globals.handleError)
     );

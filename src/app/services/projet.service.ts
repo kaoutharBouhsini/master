@@ -57,4 +57,11 @@ export class ProjetService{
     );
   }
 
+  download(id : number){
+    return this.http.get(`${Globals.url}/Projet/pdf/${id}`, Globals.httpOptions).pipe(
+      retry(2),
+      catchError(Globals.handleError)
+    );
+  }
+
 }
