@@ -5,7 +5,7 @@ export class FileDownloader {
      static downloadFile(pdfFile: PDFDocument){
         var blob = this.base64ToBlob(pdfFile.fileContent);
         var url= window.URL.createObjectURL(blob);
-        window.open(url);
+        //window.open(url);
         saveAs(blob, pdfFile.fileName);
       }
 

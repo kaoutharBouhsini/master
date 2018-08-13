@@ -13,6 +13,17 @@ import { CollaborateurComponent } from './home/collaborateur/collaborateur.compo
 import { ProjetComponent } from './home/projet/projet.component';
 import { ClientUpdateComponent } from './home/client/client-update/client-update.component';
 import { CollaborateurUpdateComponent } from './home/collaborateur/collaborateur-update/collaborateur-update.component';
+import { NavBarComponent } from './home/nav-bar/nav-bar.component';
+import { RouterModule, Routes } from '@angular/router';
+import { ParametrageComponent } from './home/parametrage/parametrage.component';
+
+const appRoutes: Routes = [
+  { path: 'home', component: HomeComponent },
+  { path: 'client', component: ClientComponent },
+  { path: 'collaborateur', component: CollaborateurComponent },
+  { path: 'projet', component: ProjetComponent },
+  { path: '**', component: HomeComponent }
+];
 
 @NgModule({
   declarations: [
@@ -23,7 +34,9 @@ import { CollaborateurUpdateComponent } from './home/collaborateur/collaborateur
     CollaborateurComponent,
     ProjetComponent,
     ClientUpdateComponent,
-    CollaborateurUpdateComponent
+    CollaborateurUpdateComponent,
+    NavBarComponent,
+    ParametrageComponent
     ],
   imports: [
     BrowserModule,
@@ -50,7 +63,12 @@ import { CollaborateurUpdateComponent } from './home/collaborateur/collaborateur
     MatInputModule,
     MatChipsModule,
     MatSelectModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatSidenavModule,
+    RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: true } // <-- debugging purposes only
+    )  
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,55 +1,58 @@
-<form (ngSubmit)="rechercher()" #heroForm="ngForm">
-  <mat-form-field>
-      <mat-label>Search</mat-label>
-      <input type="text" #search matInput placeholder="search!" [(ngModel)]="recherche" name="recherche">
-  </mat-form-field>
-  <br>
-  <button type="submit" [disabled] = "!search.value.length" mat-flat-button>Search</button>
-</form>
-<div *ngIf = "resCollaborateurs.length">
-  <h2>Collaborateurs</h2>
-  <mat-expansion-panel *ngFor = "let coll of resCollaborateurs">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          {{coll.firstname +' '+ coll.lastname}}
-        </mat-panel-title>
-        <mat-panel-description>
-          {{coll.fonctionRessourcesHumaines.name}}
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-  
-      <strong>Sexe : </strong>  {{coll.sexe}}
-      <br>
-      <strong>Situation familiale : </strong> {{coll.situationFamiliale}}
-    </mat-expansion-panel>
-</div>
-<div *ngIf = "resProjets.length">
-    <h2>Projets</h2>
-    <mat-expansion-panel *ngFor = "let proj of resProjets">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            {{proj.title}}
-          </mat-panel-title>
-          <mat-panel-description>
-            {{proj.client.name}}
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-    
-        <strong>Code : </strong>  {{proj.code}}
+<div style="margin-left : 5%">
+    <form (ngSubmit)="rechercher()" #heroForm="ngForm">
+        <mat-form-field>
+            <mat-label>Search</mat-label>
+            <input type="text" #search matInput placeholder="search!" [(ngModel)]="recherche" name="recherche">
+        </mat-form-field>
         <br>
-        <strong>Budjet : </strong> {{proj.budjet}}
-      </mat-expansion-panel>
-  </div>
-  <div *ngIf = "resClients.length">
-      <h2>Clients</h2>
-      <mat-expansion-panel *ngFor = "let clt of resClients">
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              {{clt.name}}
-            </mat-panel-title>
-            <mat-panel-description>
-              {{clt.secteur.name}}
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-        </mat-expansion-panel>
-    </div>
+        <button type="submit" [disabled] = "!search.value.length" mat-flat-button>Search</button>
+      </form>
+      <div *ngIf = "resCollaborateurs.length">
+        <h2>Collaborateurs</h2>
+        <mat-expansion-panel *ngFor = "let coll of resCollaborateurs">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{coll.firstname +' '+ coll.lastname}}
+              </mat-panel-title>
+              <mat-panel-description>
+                {{coll.fonctionRessourcesHumaines.name}}
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+        
+            <strong>Sexe : </strong>  {{coll.sexe}}
+            <br>
+            <strong>Situation familiale : </strong> {{coll.situationFamiliale}}
+          </mat-expansion-panel>
+      </div>
+      <div *ngIf = "resProjets.length">
+          <h2>Projets</h2>
+          <mat-expansion-panel *ngFor = "let proj of resProjets">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{proj.title}}
+                </mat-panel-title>
+                <mat-panel-description>
+                  {{proj.client.name}}
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+          
+              <strong>Code : </strong>  {{proj.code}}
+              <br>
+              <strong>Budjet : </strong> {{proj.budjet}}
+            </mat-expansion-panel>
+        </div>
+        <div *ngIf = "resClients.length">
+            <h2>Clients</h2>
+            <mat-expansion-panel *ngFor = "let clt of resClients">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    {{clt.name}}
+                  </mat-panel-title>
+                  <mat-panel-description>
+                    {{clt.secteur.name}}
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+              </mat-expansion-panel>
+          </div>
+      
+</div>
