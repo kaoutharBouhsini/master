@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ClientComponent } from './home/client/client.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCheckboxModule,MatExpansionModule, MatToolbarModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule, MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatAutocompleteModule, MatInputModule, MatChipsModule, MatSelect, MatSelectModule} from '@angular/material';
+import {MatButtonModule, MatCheckboxModule,MatExpansionModule, MatToolbarModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule, MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatAutocompleteModule, MatInputModule, MatChipsModule, MatSelect, MatSelectModule, MatTabsModule, MAT_DIALOG_DEFAULT_OPTIONS, MatDialog, MatDialogModule} from '@angular/material';
 import { LayoutModule } from '@angular/cdk/layout';
 import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './home/admin/admin.component';
@@ -16,12 +16,15 @@ import { CollaborateurUpdateComponent } from './home/collaborateur/collaborateur
 import { NavBarComponent } from './home/nav-bar/nav-bar.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ParametrageComponent } from './home/parametrage/parametrage.component';
+import { ParamDeviseComponent } from './home/parametrage/param-devise/param-devise.component';
+import { AddDeviseDialogComponent } from './home/parametrage/param-devise/add-devise-dialog/add-devise-dialog.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'client', component: ClientComponent },
   { path: 'collaborateur', component: CollaborateurComponent },
   { path: 'projet', component: ProjetComponent },
+  { path: 'param', component: ParametrageComponent },
   { path: '**', component: HomeComponent }
 ];
 
@@ -36,7 +39,9 @@ const appRoutes: Routes = [
     ClientUpdateComponent,
     CollaborateurUpdateComponent,
     NavBarComponent,
-    ParametrageComponent
+    ParametrageComponent,
+    ParamDeviseComponent,
+    AddDeviseDialogComponent
     ],
   imports: [
     BrowserModule,
@@ -68,9 +73,13 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
-    )  
+    ),
+    MatTabsModule,
+    MatDialogModule 
   ],
-  providers: [],
+  providers: [
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

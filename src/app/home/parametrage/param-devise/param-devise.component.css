@@ -1,0 +1,18 @@
+table{
+    width: 100%;
+    margin-top : 2.5%;
+    text-align: center;
+}
+.opBtn
+{
+    background-color: #5dc0a1;
+    color: white;
+    box-shadow: none;
+}
+ #addBtn{
+     background:linear-gradient(to right, #213f99 0%,#202c5f 100%);
+     color: white;
+     float: right;
+     border-radius: 20px;
+     margin-top: -1%
+ }
