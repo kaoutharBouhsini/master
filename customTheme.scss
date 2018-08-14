@@ -35,8 +35,43 @@ $md-verde: (
     )
 );
 
-  $primary: mat-palette($md-verde,500);
-  $accent: mat-palette($mat-orange,200);
+$md-blue: (
+    50 : #e4e6ec,
+    100 : #bcbfcf,
+    200 : #9095af,
+    300 : #646b8f,
+    400 : #424b77,
+    500 : #212b5f,
+    600 : #1d2657,
+    700 : #18204d,
+    800 : #141a43,
+    900 : #0b1032,
+    A100 : #6e7cff,
+    A200 : #3b4eff,
+    A400 : #0820ff,
+    A700 : #0017ed,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #ffffff,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+
+
+  $primary: mat-palette($md-blue,500);
+  $accent: mat-palette($md-verde,500);
 
   $theme: mat-light-theme($primary, $accent);
 

@@ -1,15 +1,25 @@
-<h1 mat-dialog-title>Favorite Animal</h1>
-<div mat-dialog-content>
-  My favorite animal is:
-  <ul>
-    <li>
-      <span *ngIf="data.animal === 'panda'">&#10003;</span> Panda
-    </li>
-    <li>
-      <span *ngIf="data.animal === 'unicorn'">&#10003;</span> Unicorn
-    </li>
-    <li>
-      <span *ngIf="data.animal === 'lion'">&#10003;</span> Lion
-    </li>
-  </ul>
+<div class="header">
+    <button mat-mini-fab class="icon_btn">
+        <mat-icon>attach_money</mat-icon>
+      </button>
+      &nbsp; 
+      <strong>AJOUTER UNE DEVISE</strong>
+</div>
+<div mat-dialog-content class="content">
+    <form class="add-form" #addForm = "ngForm" (ngSubmit) = "onSubmit()">
+      <br>
+        <mat-form-field class="add-full-width">
+          <input matInput placeholder="Intitulé du devise" [(ngModel)] = "devise.name" name="name" required>
+        </mat-form-field>
+      
+        <mat-form-field class="add-full-width">
+          <textarea matInput placeholder="Description" style="resize: none" name="description" [(ngModel)] = "devise.description"></textarea>
+        </mat-form-field>
+        <br>
+        <button type="submit" mat-flat-button id="addBtn">Ajouter</button>
+      </form>
+      <!--
+      <div class="footer">
+      </div>
+      -->
 </div>

@@ -1,35 +1,32 @@
-<mat-card>
-  <button mat-flat-button id="addBtn" (click)="openDialog()">
+<mat-card style="background: rgba(255, 255, 255, 0)">
+  <button mat-flat-button id="addBtn" (click)="openDialog();">
     <mat-icon>add_circle</mat-icon> &nbsp; Ajouter une devise
   </button>
 
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <div style="margin-top: 2%">
+    <div class="header" >
+      <button mat-mini-fab class="icon_btn">
+        <mat-icon>attach_money</mat-icon>
+      </button>
+      &nbsp; 
+      <strong>DEVISES</strong>
+    </div>
+    <div class="content">
+      <mat-list>
+        <mat-list-item *ngFor="let devise of devises; let i = last" [ngClass]="{'notLast':!i}">
+          <mat-icon matListIcon class="devise_icon" style="margin-right: 15%">attach_money</mat-icon>
+          <h3 matLine> {{devise.name}} </h3>
+          <span> {{devise.description}} </span>
 
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef style="text-align: center"> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="description">
-      <th mat-header-cell *matHeaderCellDef style="text-align: center"> Description </th>
-      <td mat-cell *matCellDef="let element"> {{element.description}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="operation">
-      <th mat-header-cell *matHeaderCellDef style="text-align: center"> Opération </th>
-      <td mat-cell *matCellDef="let element">
-        <button mat-mini-fab class="opBtn">
-          <mat-icon>settings</mat-icon>
-        </button>
-        &nbsp; &nbsp;
-        <button mat-mini-fab class="opBtn">
-          <mat-icon>delete</mat-icon>
-        </button>
-      </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-
+          <button mat-icon-button class="opBtn">
+            <mat-icon>settings</mat-icon>
+          </button>
+          &nbsp; &nbsp;
+          <button mat-icon-button class="opBtn" style="margin-right: 5%" (click) = "openSnackBar(devise.name, devise.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </div>
 </mat-card>

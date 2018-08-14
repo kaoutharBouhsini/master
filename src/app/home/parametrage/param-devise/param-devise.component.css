@@ -3,11 +3,8 @@ table{
     margin-top : 2.5%;
     text-align: center;
 }
-.opBtn
-{
-    background-color: #5dc0a1;
-    color: white;
-    box-shadow: none;
+.opBtn{
+   color: #5dc0a1;
 }
  #addBtn{
      background:linear-gradient(to right, #213f99 0%,#202c5f 100%);
@@ -15,4 +12,46 @@ table{
      float: right;
      border-radius: 20px;
      margin-top: -1%
+ }
+
+ .header{
+     background: #F6F6F6;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      height: 45px; 
+      padding-top: 0.5%;
+      padding-left: 1%;
+ }
+ .content{
+     border-bottom-left-radius: 20px;
+     border-bottom-right-radius: 20px;
+     background: white;
+ }
+
+ mat-list-item {
+    padding-left : 2%;
+ }
+
+ mat-list-item.notLast {
+    border-bottom: lightgray 1px solid;
+ }
+
+ span{
+     margin-right: 20%;
+     color: #7386F0;
+     width: 100%
+ }
+ h3, .devise_icon{
+    color: gray;
+ }
+
+ .icon_btn{
+    background-color: #2B4774;
+    color: white;
+    box-shadow: none;
+ }
+
+ strong{
+    color: #2B4774;
+    font-size: 14pt;
  }

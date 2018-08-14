@@ -1,13 +1,20 @@
 /* You can add global styles to this file, and also import other style files 
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css'; 
 */
+.custom-modalbox .mat-dialog-container {
+    padding: 0%;
+    border-radius: 16px;
+    overflow: hidden;
+}
 
 section{
     margin-left : 5%
 }
-.opBtn
-{
-    background-color: aqua;
-    color: antiquewhite;
+body{
+    background :radial-gradient(circle, #cdd1de 0%,#e2e4eb 50%,#f7f7f8 100%);
+    background-position-x: 50%;
+    background-position-y: 0%;
+    background-size: 100%;
+    background-attachment: fixed;
+};
 
-}
