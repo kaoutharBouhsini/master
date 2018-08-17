@@ -4,6 +4,9 @@
      height: 45px; 
      padding-top: 0.5%;
      padding-left: 1%;
+     font-family: 'Roboto', 'Cambria';
+     font-size: 17pt;
+     color : #2c4675;
 }
 
 .footer{
@@ -27,16 +30,13 @@
     box-shadow: none;
  }
 
- strong{
-    color: #2B4774;
-    font-size: 14pt;
- }
 
  .add-form {
-    min-width: 150px;
-    max-width: 500px;
+    min-width: 60%;
+    max-width: 90%;
     width: 100%;
-    padding-left: 12% 
+    margin: auto;
+    /*padding-left: 12% */
   }
   
   .add-full-width {

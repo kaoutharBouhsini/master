@@ -1,0 +1,26 @@
+<div class="header">
+  <button mat-mini-fab class="icon_btn">
+      <mat-icon>attach_money</mat-icon>
+    </button>
+    &nbsp; 
+    <span style="vertical-align: middle">MODIFICATION</span>
+</div>
+<div mat-dialog-content class="content">
+  <form class="add-form" #addForm = "ngForm" (ngSubmit) = "onSubmit()">
+    <br>
+      <mat-form-field class="add-full-width">
+        <input matInput placeholder="Intitulé de la famille" [(ngModel)] = "data.name" name="name" #name="ngModel" required>
+        <mat-error *ngIf="name.invalid">
+          Ce champs est <strong>important</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <br>
+      <button [type]="addForm.valid?'submit':'button'"  mat-flat-button id="addBtn">Modifier</button>
+    </form>
+    <br>
+    <!--
+    <div class="footer">
+    </div>
+    -->
+</div>

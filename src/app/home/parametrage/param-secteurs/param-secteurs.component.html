@@ -1,0 +1,31 @@
+<mat-card style="background: rgba(255, 255, 255, 0)">
+  <button mat-flat-button id="addBtn" (click)="openDialog();">
+    <mat-icon>add_circle</mat-icon> &nbsp; Ajouter un secteur d'activité
+  </button>
+
+  <div style="margin-top: 2%">
+    <div class="header" >
+      <button mat-mini-fab class="icon_btn">
+        <mat-icon>account_balance</mat-icon>
+      </button>
+      &nbsp; 
+      <span style="vertical-align: middle">SECTEURS D'ACTIVITE</span>
+    </div>
+    <div class="content">
+      <mat-list>
+        <mat-list-item *ngFor="let secteur of secteurs; let i = last" [ngClass]="{'notLast':!i}">
+          <mat-icon matListIcon class="devise_icon" style="margin-right: 15%">account_balance</mat-icon>
+          <h3 matLine> {{secteur.name}} </h3>
+
+          <button mat-icon-button class="opBtn" (click) = "openUpdateDialog(secteur)">
+            <mat-icon>settings</mat-icon>
+          </button>
+          &nbsp; &nbsp;
+          <button mat-icon-button class="opBtn" style="margin-right: 5%" (click) = "openSnackBar(secteur.name, secteur.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+</mat-card>

@@ -1,0 +1,37 @@
+<div class="header">
+    <button mat-mini-fab class="icon_btn">
+        <mat-icon>queue_play_next</mat-icon>
+      </button>
+      &nbsp; 
+      <span style="vertical-align: middle">MODIFICATION</span>
+  </div>
+  <div mat-dialog-content class="content">
+    <form class="add-form" #addForm = "ngForm" (ngSubmit) = "onSubmit()">
+      <br>
+        <mat-form-field class="add-full-width">
+          <input matInput placeholder="Intitulé du type" [(ngModel)] = "data.name" name="name" #name="ngModel" required>
+          <mat-error *ngIf="name.invalid">
+            Ce champs est <strong>important</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="add-full-width">
+          <mat-label>Famille d'environnement</mat-label>
+          <mat-select  [(ngModel)]="data.refFamilleEnvironnement.id" name="refFamilleEnvironnement" #famille="ngModel" required>
+            <mat-option *ngFor = "let familleEnv of familleEnvs$ | async" [value] = "familleEnv.id">{{familleEnv.name}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="famille.invalid">
+            Ce champs est <strong>important</strong>
+          </mat-error> 
+        </mat-form-field>
+
+        <br>
+        <button [type]="addForm.valid?'submit':'button'" mat-flat-button id="addBtn">Modifier</button>
+      </form>
+      <br>
+      <!--
+      <div class="footer">
+      </div>
+      -->
+  </div>
+  

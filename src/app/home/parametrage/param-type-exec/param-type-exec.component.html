@@ -1,0 +1,31 @@
+<mat-card style="background: rgba(255, 255, 255, 0)">
+  <button mat-flat-button id="addBtn" (click)="openDialog();">
+    <mat-icon>add_circle</mat-icon> &nbsp; Ajouter un type d'exécution
+  </button>
+
+  <div style="margin-top: 2%">
+    <div class="header" >
+      <button mat-mini-fab class="icon_btn">
+        <mat-icon>extension</mat-icon>
+      </button>
+      &nbsp; 
+      <span style="vertical-align: middle">TYPES D'EXECUTION DES PROJETS</span>
+    </div>
+    <div class="content">
+      <mat-list>
+        <mat-list-item *ngFor="let typeExec of typeExecs; let i = last" [ngClass]="{'notLast':!i}">
+          <mat-icon matListIcon class="devise_icon" style="margin-right: 15%">extension</mat-icon>
+          <h3 matLine> {{typeExec.name}} </h3>
+
+          <button mat-icon-button class="opBtn" (click) = "openUpdateDialog(typeExec)">
+            <mat-icon>settings</mat-icon>
+          </button>
+          &nbsp; &nbsp;
+          <button mat-icon-button class="opBtn" style="margin-right: 5%" (click) = "openSnackBar(typeExec.name, typeExec.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+</mat-card>

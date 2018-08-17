@@ -3,21 +3,27 @@
         <mat-icon>attach_money</mat-icon>
       </button>
       &nbsp; 
-      <strong>AJOUTER UNE DEVISE</strong>
+      <span style="vertical-align: middle">AJOUTER UNE DEVISE</span>
 </div>
 <div mat-dialog-content class="content">
     <form class="add-form" #addForm = "ngForm" (ngSubmit) = "onSubmit()">
       <br>
         <mat-form-field class="add-full-width">
-          <input matInput placeholder="Intitulé du devise" [(ngModel)] = "devise.name" name="name" required>
+          <input matInput placeholder="Intitulé du devise" [(ngModel)] = "devise.name" name="name" #name="ngModel" required>
+          <mat-error *ngIf="name.invalid">
+             Ce champs est <strong>important</strong>
+          </mat-error>
+          <mat-hint *ngIf="!isUnique(name.value)" style="color: red">
+            Ce champs doit être <strong>unique</strong>
+          </mat-hint>
         </mat-form-field>
-      
         <mat-form-field class="add-full-width">
           <textarea matInput placeholder="Description" style="resize: none" name="description" [(ngModel)] = "devise.description"></textarea>
         </mat-form-field>
         <br>
-        <button type="submit" mat-flat-button id="addBtn">Ajouter</button>
+        <button [type]="addForm.valid && isUnique(name.value)?'submit':'button'" mat-flat-button id="addBtn">Ajouter</button>
       </form>
+      <br>
       <!--
       <div class="footer">
       </div>

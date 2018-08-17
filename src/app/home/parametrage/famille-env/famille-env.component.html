@@ -1,0 +1,31 @@
+<mat-card style="background: rgba(255, 255, 255, 0)">
+  <button mat-flat-button id="addBtn" (click)="openDialog();">
+    <mat-icon>add_circle</mat-icon> &nbsp; Ajouter une famille
+  </button>
+
+  <div style="margin-top: 2%">
+    <div class="header" >
+      <button mat-mini-fab class="icon_btn">
+        <mat-icon>group</mat-icon>
+      </button>
+      &nbsp; 
+      <span style="vertical-align: middle">FAMILLES D'ENVIRONNEMENT</span>
+    </div>
+    <div class="content">
+      <mat-list>
+        <mat-list-item *ngFor="let famille of familles; let i = last" [ngClass]="{'notLast':!i}">
+          <mat-icon matListIcon class="devise_icon" style="margin-right: 15%">group</mat-icon>
+          <h3 matLine> {{famille.name}} </h3>
+
+          <button mat-icon-button class="opBtn" (click) = "openUpdateDialog(famille)">
+            <mat-icon>settings</mat-icon>
+          </button>
+          &nbsp; &nbsp;
+          <button mat-icon-button class="opBtn" style="margin-right: 5%" (click) = "openSnackBar(famille.name, famille.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+</mat-card>

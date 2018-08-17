@@ -1,3 +1,6 @@
+import { ParamStatutCollaborateur } from './param-statut-collaborateur';
+import { ParamSituationFamiliale } from './param-situation-familiale';
+import { ParamSexe } from './param-sexe';
 import { RefFonctionRh } from "./ref_fonctions_rh";
 import { RefNiveauEtude } from "./ref_niveau_etudes";
 import { RefEtablissement } from "./ref_etablissement";
@@ -18,9 +21,9 @@ export class Collaborateur {
     comingDate: string;
     goingDate: string;*/
     hiringDate: string;
-    sexe: string;
-    situationFamiliale: string;
-    statutCollaborateur:string;
+    sexe: ParamSexe;
+    situationFamiliale: ParamSituationFamiliale;
+    statutCollaborateur: ParamStatutCollaborateur;
 
     fonctionRessourcesHumaines: RefFonctionRh;
     niveauEtudes: RefNiveauEtude;

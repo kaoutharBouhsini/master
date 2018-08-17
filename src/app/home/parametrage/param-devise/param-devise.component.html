@@ -9,16 +9,16 @@
         <mat-icon>attach_money</mat-icon>
       </button>
       &nbsp; 
-      <strong>DEVISES</strong>
+      <span style="vertical-align: middle">DEVISES</span>
     </div>
     <div class="content">
       <mat-list>
         <mat-list-item *ngFor="let devise of devises; let i = last" [ngClass]="{'notLast':!i}">
           <mat-icon matListIcon class="devise_icon" style="margin-right: 15%">attach_money</mat-icon>
           <h3 matLine> {{devise.name}} </h3>
-          <span> {{devise.description}} </span>
+          <span class="description"> {{devise.description}} </span>
 
-          <button mat-icon-button class="opBtn">
+          <button mat-icon-button class="opBtn" (click) = "openUpdateDialog(devise)">
             <mat-icon>settings</mat-icon>
           </button>
           &nbsp; &nbsp;

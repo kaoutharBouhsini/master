@@ -1,0 +1,32 @@
+<mat-card style="background: rgba(255, 255, 255, 0)">
+    <button mat-flat-button id="addBtn" (click)="openDialog();">
+      <mat-icon>add_circle</mat-icon> &nbsp; Ajouter un type d'environement
+    </button>
+  
+    <div style="margin-top: 2%">
+      <div class="header" >
+        <button mat-mini-fab class="icon_btn">
+          <mat-icon>queue_play_next</mat-icon>
+        </button>
+        &nbsp; 
+        <span style="vertical-align: middle">TYPE D'ENVIRONEMENT</span>
+      </div>
+      <div class="content">
+        <mat-list>
+          <mat-list-item *ngFor="let typeEnv of typeEnvs; let i = last" [ngClass]="{'notLast':!i}">
+            <mat-icon matListIcon class="devise_icon" style="margin-right: 15%">queue_play_next</mat-icon>
+            <h3 matLine> {{typeEnv.name}} </h3>
+            <span class="description"> {{typeEnv.refFamilleEnvironnement?.name}} </span>
+
+            <button mat-icon-button class="opBtn" (click) = "openUpdateDialog(typeEnv)">
+              <mat-icon>settings</mat-icon>
+            </button>
+            &nbsp; &nbsp;
+            <button mat-icon-button class="opBtn" style="margin-right: 5%" (click) = "openSnackBar(typeEnv.name, typeEnv.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-list-item>
+        </mat-list>
+      </div>
+    </div>
+  </mat-card>

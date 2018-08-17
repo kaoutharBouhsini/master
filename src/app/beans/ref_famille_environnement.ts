@@ -4,5 +4,4 @@ export class RefFamilleEnvironnement{
     id: number;
     name: string;
     description: string;
-    paramTypeEnvironnement : ParamTypeEnvironnement;
 }

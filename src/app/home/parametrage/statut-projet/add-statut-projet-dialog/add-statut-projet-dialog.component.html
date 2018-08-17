@@ -1,0 +1,28 @@
+<div class="header">
+  <button mat-mini-fab class="icon_btn">
+      <mat-icon>attach_money</mat-icon>
+    </button>
+    &nbsp; 
+    <span style="vertical-align: middle">AJOUTER UN STATUT</span>
+</div>
+<div mat-dialog-content class="content">
+  <form class="add-form" #addForm = "ngForm" (ngSubmit) = "onSubmit()">
+    <br>
+      <mat-form-field class="add-full-width">
+        <input matInput placeholder="Libellé du statut" [(ngModel)] = "statut.name" name="name" #name="ngModel" required>
+        <mat-error *ngIf="name.invalid">
+          Ce champs est <strong>important</strong>
+        </mat-error>
+        <mat-hint *ngIf="!isUnique(name.value)" style="color: red">
+          Ce champs doit être <strong>unique</strong>
+        </mat-hint>
+      </mat-form-field>
+      <br>
+      <button [type]="addForm.valid && isUnique(name.value)?'submit':'button'"  mat-flat-button id="addBtn">Ajouter</button>
+    </form>
+    <br>
+    <!--
+    <div class="footer">
+    </div>
+    -->
+</div>
