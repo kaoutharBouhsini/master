@@ -10,13 +10,18 @@
 }
 
 section{
-    margin-left : 5%
+    margin-left : 8%
 }
 body{
-    background :radial-gradient(circle, #cdd1de 0%,#e2e4eb 50%,#f7f7f8 100%);
+   /* background :radial-gradient(circle, #cdd1de 0%,#e2e4eb 50%,#f7f7f8 100%);
     background-position-x: 50%;
     background-position-y: 0%;
-    background-size: 100%;
+    background-size: 100%;*/
     background-attachment: fixed;
+    background: url('assets/images/bg.png');
+    background-size: 100%;
+    background-position-y: 40% 
 };
+
+
 
