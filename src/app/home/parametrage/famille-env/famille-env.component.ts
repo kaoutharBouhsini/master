@@ -13,6 +13,11 @@ import { UpdateFamilleDialogComponent } from './update-famille-dialog/update-fam
 export class FamilleEnvComponent implements OnInit {
 
   familles: RefFamilleEnvironnement[] = [];
+  selectedItems: RefFamilleEnvironnement[] = [];
+  nOrder: boolean = true;
+  dOrder: boolean = false;
+  selectTout: boolean = false;
+
   constructor(private RefFamilleEnvService: RefFamilleEnvService, public dialog: MatDialog, public snackBar: MatSnackBar) { }
 
   ngOnInit() {
@@ -33,7 +38,7 @@ export class FamilleEnvComponent implements OnInit {
   }
 
   store(famille: RefFamilleEnvironnement) {
-    console.log('ADD famille '+famille.name)
+    console.log('ADD famille ' + famille.name)
     this.RefFamilleEnvService.add(famille).subscribe(_famille => this.familles.push(_famille));
   }
 
@@ -71,4 +76,54 @@ export class FamilleEnvComponent implements OnInit {
     this.RefFamilleEnvService.update(famille.id, famille).subscribe();
   }
 
+  sortByName() {
+    this.nOrder = !this.nOrder;
+    this.familles = this.familles.sort((a: RefFamilleEnvironnement, b: RefFamilleEnvironnement) => {
+      return this.nOrder ? ((a.name > b.name) ? 1 : -1) : ((a.name < b.name) ? 1 : -1);
+    })
+  }
+
+  sortByDescription() {
+    this.dOrder = !this.dOrder;
+    this.familles = this.familles.sort((a: RefFamilleEnvironnement, b: RefFamilleEnvironnement) => {
+      return this.dOrder ? ((a.description > b.description) ? 1 : -1) : ((a.description < b.description) ? 1 : -1);
+    })
+  }
+
+  select(famille: RefFamilleEnvironnement) {
+    if (!this.selectedItems.includes(famille))
+      this.selectedItems.push(famille);
+    else {
+      let index = this.selectedItems.indexOf(famille);
+      console.log('index : ' + index);
+      this.selectedItems.splice(index, 1);
+      this.selectTout = false;
+    }
+    console.log(this.selectedItems);
+  }
+
+  selectAll() {
+    this.selectedItems = [];
+    if (this.selectTout)
+    {
+      this.selectedItems = [];
+      this.familles.map((it) => this.selectedItems.push(it));
+    }    
+
+   // console.log(this.selectedItems);
+  }
+
+  isSelected(famille: RefFamilleEnvironnement){
+    return this.selectedItems.includes(famille)
+  }
+
+  openDeleteSnackBar(){
+    let snackbarRef = this.snackBar.open("Confirmez la suppression de éléments selectionnés ", "Oui", {
+      duration: 5000,
+    });
+    snackbarRef.onAction().subscribe(() => {
+      this.selectedItems.map ( (it) => this.delete(it.id));
+      this.selectedItems = [];
+    });
+  }
 }

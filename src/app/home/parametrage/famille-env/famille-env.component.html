@@ -1,31 +1,38 @@
-<mat-card style="background: rgba(255, 255, 255, 0)">
-  <button mat-flat-button id="addBtn" (click)="openDialog();">
-    <mat-icon>add_circle</mat-icon> &nbsp; Ajouter une famille
-  </button>
-
-  <div style="margin-top: 2%">
-    <div class="header" >
-      <button mat-mini-fab class="icon_btn">
-        <mat-icon>group</mat-icon>
+  <header>
+      <mat-checkbox  matListIcon style="margin-right:4%" (change)="selectAll();" [(ngModel)] = "selectTout"></mat-checkbox>
+      <span class="HeadName" (click) = "sortByName()">
+          <span>Famille </span>
+          &nbsp;
+          <mat-icon>unfold_more</mat-icon>
+      </span>
+      <span class="Headdescription" (click) = "sortByDescription()">
+        <span> Description </span>
+        &nbsp;
+      <mat-icon>unfold_more</mat-icon>
+      </span>
+    <button mat-flat-button id="addBtn" class="btn" (click)="openDialog();">
+      <mat-icon>add</mat-icon> &nbsp; ajouter &nbsp;
       </button>
-      &nbsp; 
-      <span style="vertical-align: middle">FAMILLES D'ENVIRONNEMENT</span>
-    </div>
-    <div class="content">
-      <mat-list>
-        <mat-list-item *ngFor="let famille of familles; let i = last" [ngClass]="{'notLast':!i}">
-          <mat-icon matListIcon class="devise_icon" style="margin-right: 15%">group</mat-icon>
-          <h3 matLine> {{famille.name}} </h3>
+  </header>
 
-          <button mat-icon-button class="opBtn" (click) = "openUpdateDialog(famille)">
-            <mat-icon>settings</mat-icon>
+      <mat-list>
+        <mat-list-item *ngFor="let famille of familles;"> 
+          <!-- let i = last" [ngClass]="{'notLast':!i}"> -->
+  
+          <mat-checkbox  matListIcon style="margin-right:2%" (change) = "select(famille)" [checked]="isSelected(famille)"></mat-checkbox>
+          <h3 matLine class="name"> {{famille.name}} </h3>
+          <span class="description"> {{famille.description!!}} </span>
+
+          <button mat-icon-button [matMenuTriggerFor]="menu" class="opIcon">
+            <mat-icon>more_vert</mat-icon>
           </button>
-          &nbsp; &nbsp;
-          <button mat-icon-button class="opBtn" style="margin-right: 5%" (click) = "openSnackBar(famille.name, famille.id)">
-            <mat-icon>delete</mat-icon>
-          </button>
+          <mat-menu #menu="matMenu" >
+            <button mat-menu-item (click) = "openUpdateDialog(famille)" >modifier</button>
+            <button mat-menu-item (click) = "openSnackBar(famille.name, famille.id)">supprimer</button>
+          </mat-menu>
         </mat-list-item>
       </mat-list>
-    </div>
-  </div>
-</mat-card>
+
+      <button mat-flat-button class="btn" id="deleteBtn" *ngIf = "selectedItems.length" (click) = "openDeleteSnackBar()">
+          <mat-icon>delete</mat-icon> &nbsp; supprimer &nbsp;
+      </button>
