@@ -10,6 +10,7 @@ import { MAT_DIALOG_DATA } from '../../../../../../node_modules/@angular/materia
 export class UpdateStatutProjetDialogComponent  {
 
   @Output() update: EventEmitter<ParamStatutProjet> = new EventEmitter();
+  @Output() closed: EventEmitter<any> = new EventEmitter();
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: ParamStatutProjet) {}
 
@@ -17,5 +18,8 @@ export class UpdateStatutProjetDialogComponent  {
     this.update.emit(this.data);
     console.log('event emitted');
   }
-
+  close()
+  {
+    this.closed.emit();
+  }
 }

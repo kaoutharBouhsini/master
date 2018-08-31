@@ -9,6 +9,7 @@ import { Component,  EventEmitter, Output, Inject } from '@angular/core';
 export class UpdateTypeExecDialogComponent  {
 
   @Output() update: EventEmitter<ParamTypeExecutionProjet> = new EventEmitter();
+  @Output() closed: EventEmitter<any> = new EventEmitter();
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: ParamTypeExecutionProjet) {}
 
@@ -16,5 +17,8 @@ export class UpdateTypeExecDialogComponent  {
     this.update.emit(this.data);
     console.log('event emitted');
   }
-
+  close()
+  {
+    this.closed.emit();
+  }
 }

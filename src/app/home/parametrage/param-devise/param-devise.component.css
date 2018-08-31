@@ -3,59 +3,68 @@ table{
     margin-top : 2.5%;
     text-align: center;
 }
-.opBtn{
-   color: #5dc0a1;
-}
+
  #addBtn{
-     background:linear-gradient(to right, #213f99 0%,#202c5f 100%);
-     color: white;
      float: right;
      border-radius: 20px;
-     margin-top: -1%
+    font-family: 'Roboto light';
+    margin-right:3%
  }
 
- .header{
-     background: #F6F6F6;
-      border-top-left-radius: 20px;
-      border-top-right-radius: 20px;
-      height: 45px; 
-      padding-top: 0.3%;
-      padding-left: 1%;
-      font-family: 'Roboto', 'Cambria';
-      font-size: 17pt;
-      color : #2c4675;
-      vertical-align: middle
+ #deleteBtn{
+    margin : 1% 0% 1% 42%;
  }
- .content{
-     border-bottom-left-radius: 20px;
-     border-bottom-right-radius: 20px;
-     background: white;
+
+ .btn{
+    background:linear-gradient(to right, #213f99 0%,#202c5f 100%);
+    color: white;
+    align-self: center;
+ }
+
+ h3.name{
+    color: #2c4675;
+ }
+
+ .Headdescription{
+    margin: 0;
+    flex-grow: 1;
+    cursor: context-menu;
+ }
+
+ .HeadName{
+    flex-grow: 1;
+    max-width: 28%;
+    cursor: context-menu;
+ }
+
+header{
+    background: #F6F6F6;
+    height: 50px;
+    padding-left: 53px;
+    align-items: center;
+    display: flex;
  }
 
  mat-list-item {
-    padding-left : 2%;
- }
-
- mat-list-item.notLast {
+    padding-left : 33px;
+    font-family: 'Roboto regular';
     border-bottom: lightgray 1px solid;
  }
 
  span.description{
-     margin-right: 20%;
-     color: #7386F0;
-     width: 100%
- }
- h3, .devise_icon{
-    color: gray;
+     margin-right: 35%;
+     color: #6f7889;
+     width: 100%;
  }
 
- .icon_btn{
-    background-color: #2B4774;
-    color: white;
-    box-shadow: none;
+ .opIcon{
+    color: #2c4675
  }
+ ::ng-deep .mat-expansion-panel-body{
+    padding: 0px;
+}
 
- strong{
-    color: #2B4774;
-    font-size: 14pt;
- }
+span mat-icon{
+    font-size: 14px;
+    font-weight: bolder;
+}

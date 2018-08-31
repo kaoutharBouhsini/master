@@ -45,6 +45,28 @@ import { AddStatutCollaborateurDialogComponent } from './home/parametrage/statut
 import { UpdateStatutCollaborateurDialogComponent } from './home/parametrage/statut-collaborateur/update-statut-collaborateur-dialog/update-statut-collaborateur-dialog.component';
 import { AddStatutProjetDialogComponent } from './home/parametrage/statut-projet/add-statut-projet-dialog/add-statut-projet-dialog.component';
 import { UpdateStatutProjetDialogComponent } from './home/parametrage/statut-projet/update-statut-projet-dialog/update-statut-projet-dialog.component';
+import { ParamEnvironnementComponent } from './home/parametrage/param-environnement/param-environnement.component';
+import { ParamRealisationComponent } from './home/parametrage/param-realisation/param-realisation.component';
+import { AddEnvDialogComponent } from './home/parametrage/param-environnement/add-env-dialog/add-env-dialog.component';
+import { UpdateEnvDialogComponent } from './home/parametrage/param-environnement/update-env-dialog/update-env-dialog.component';
+import { AddRealisationDialogComponent } from './home/parametrage/param-realisation/add-realisation-dialog/add-realisation-dialog.component';
+import { UpdateRealisationDialogComponent } from './home/parametrage/param-realisation/update-realisation-dialog/update-realisation-dialog.component';
+import { ParamFamilleDocumentationComponent } from './home/parametrage/param-famille-documentation/param-famille-documentation.component';
+import { ParamFamillePjComponent } from './home/parametrage/param-famille-pj/param-famille-pj.component';
+import { ParamRoleComponent } from './home/parametrage/param-role/param-role.component';
+import { AddFamillePjDialogComponent } from './home/parametrage/param-famille-pj/add-famille-pj-dialog/add-famille-pj-dialog.component';
+import { UpdateFamillePjDialogComponent } from './home/parametrage/param-famille-pj/update-famille-pj-dialog/update-famille-pj-dialog.component';
+import { AddFamilleDocsDialogComponent } from './home/parametrage/param-famille-documentation/add-famille-docs-dialog/add-famille-docs-dialog.component';
+import { UpdateFamilleDocsDialogComponent } from './home/parametrage/param-famille-documentation/update-famille-docs-dialog/update-famille-docs-dialog.component';
+import { AddRoleDialogComponent } from './home/parametrage/param-role/add-role-dialog/add-role-dialog.component';
+import { UpdateRoleDialogComponent } from './home/parametrage/param-role/update-role-dialog/update-role-dialog.component';
+import { TagsComponent } from './home/parametrage/tags/tags.component';
+import { AddTagDialogComponent } from './home/parametrage/tags/add-tag-dialog/add-tag-dialog.component';
+import { UpdateTagDialogComponent } from './home/parametrage/tags/update-tag-dialog/update-tag-dialog.component';
+import { RoleTachesComponent } from './home/parametrage/role-taches/role-taches.component';
+import { TachesComponent } from './home/parametrage/taches/taches.component';
+import { AddTacheDialogComponent } from './home/parametrage/taches/add-tache-dialog/add-tache-dialog.component';
+import { UpdateTacheDialogComponent } from './home/parametrage/taches/update-tache-dialog/update-tache-dialog.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -96,14 +118,39 @@ const appRoutes: Routes = [
     AddStatutCollaborateurDialogComponent,
     UpdateStatutCollaborateurDialogComponent,
     AddStatutProjetDialogComponent,
-    UpdateStatutProjetDialogComponent
+    UpdateStatutProjetDialogComponent,
+    ParamEnvironnementComponent,
+    ParamRealisationComponent,
+    AddEnvDialogComponent,
+    UpdateEnvDialogComponent,
+    AddRealisationDialogComponent,
+    UpdateRealisationDialogComponent,
+    ParamFamilleDocumentationComponent,
+    ParamFamillePjComponent,
+    ParamRoleComponent,
+    AddFamillePjDialogComponent,
+    UpdateFamillePjDialogComponent,
+    AddFamilleDocsDialogComponent,
+    UpdateFamilleDocsDialogComponent,
+    AddRoleDialogComponent,
+    UpdateRoleDialogComponent,
+    TagsComponent,
+    AddTagDialogComponent,
+    UpdateTagDialogComponent,
+    RoleTachesComponent,
+    TachesComponent,
+    AddTacheDialogComponent,
+    UpdateTacheDialogComponent
   ],
   entryComponents: [AddDeviseDialogComponent, DeviseUpdateDialogComponent, AddEntiteDialogComponent, UpdateEntiteDialogComponent, AddSecteurDialogComponent,
     UpdateSecteurDialogComponent, AddTypeEnvDialogComponent, UpdateTypeEnvDialogComponent, AddTypeExecDialogComponent,
     UpdateTypeExecDialogComponent, AddFamilleDialogComponent, UpdateFamilleDialogComponent, AddSexeDialogComponent,
     UpdateSexeDialogComponent, AddSituationFamDialogComponent, UpdateSituationFamDialogComponent,
     AddStatutCollaborateurDialogComponent, UpdateStatutCollaborateurDialogComponent, AddStatutProjetDialogComponent,
-    UpdateStatutProjetDialogComponent],
+    UpdateStatutProjetDialogComponent, AddEnvDialogComponent, UpdateEnvDialogComponent, AddRealisationDialogComponent,
+    UpdateRealisationDialogComponent, AddFamillePjDialogComponent, UpdateFamillePjDialogComponent, AddFamilleDocsDialogComponent,
+    UpdateFamilleDocsDialogComponent, AddRoleDialogComponent, UpdateRoleDialogComponent, AddTagDialogComponent,
+    UpdateTagDialogComponent, AddTacheDialogComponent, UpdateTacheDialogComponent],
   imports: [
     BrowserModule,
     MatRadioModule,

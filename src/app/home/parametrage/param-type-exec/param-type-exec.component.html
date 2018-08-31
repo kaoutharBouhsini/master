@@ -1,31 +1,52 @@
-<mat-card style="background: rgba(255, 255, 255, 0)">
-  <button mat-flat-button id="addBtn" (click)="openDialog();">
-    <mat-icon>add_circle</mat-icon> &nbsp; Ajouter un type d'exécution
-  </button>
-
-  <div style="margin-top: 2%">
-    <div class="header" >
-      <button mat-mini-fab class="icon_btn">
-        <mat-icon>extension</mat-icon>
-      </button>
-      &nbsp; 
-      <span style="vertical-align: middle">TYPES D'EXECUTION DES PROJETS</span>
-    </div>
-    <div class="content">
-      <mat-list>
-        <mat-list-item *ngFor="let typeExec of typeExecs; let i = last" [ngClass]="{'notLast':!i}">
-          <mat-icon matListIcon class="devise_icon" style="margin-right: 15%">extension</mat-icon>
-          <h3 matLine> {{typeExec.name}} </h3>
-
-          <button mat-icon-button class="opBtn" (click) = "openUpdateDialog(typeExec)">
-            <mat-icon>settings</mat-icon>
-          </button>
-          &nbsp; &nbsp;
-          <button mat-icon-button class="opBtn" style="margin-right: 5%" (click) = "openSnackBar(typeExec.name, typeExec.id)">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </mat-list-item>
-      </mat-list>
-    </div>
-  </div>
-</mat-card>
+<table>
+    <tr class="head">
+      <td class = "col1">
+         <mat-checkbox   (change)="selectAll();" [(ngModel)] = "selectTout"></mat-checkbox>
+         <span class="headItem" (click) = "sortByName()" style="margin-left: 35px;">
+             <span>TYPE </span>
+             &nbsp;
+             <mat-icon>unfold_more</mat-icon>
+         </span>
+      </td>
+ 
+      <td class="col2" colspan="2">
+         <span class="headItem" (click) = "sortByDescription()" >
+             <span> Description </span>
+             &nbsp;
+           <mat-icon>unfold_more</mat-icon>
+           </span>
+      </td>
+ 
+      <td class="col4">
+         <button mat-flat-button id="addBtn" class="btn" (click)="openDialog();">
+             <mat-icon>add</mat-icon> &nbsp; ajouter &nbsp;
+             </button>
+      </td>
+    </tr>
+               <!-- let i = last" [ngClass]="{'notLast':!i}"> -->
+   <tr class="list_item" *ngFor="let typeExec of typeExecs;" style="font-size: 16px;">
+                   <td class = "col1">
+                       <mat-checkbox (change) = "select(typeExec)" [checked]="isSelected(typeExec)">
+                           <h3  class="name"> {{typeExec.name}} </h3>
+                       </mat-checkbox>
+                   </td>
+                   <td class = "col2" colspan="2">
+                       <span class="description">  {{typeExec.description!!}} </span>
+                   </td>
+                   <td class = "col4">
+                       <button mat-icon-button [matMenuTriggerFor]="menu" class="opIcon">
+                           <mat-icon>more_vert</mat-icon>
+                         </button>
+                   </td>
+                   <mat-menu #menu="matMenu" >
+                       <button mat-menu-item (click) = "openUpdateDialog(typeExec)" >modifier</button>
+                       <button mat-menu-item (click) = "openSnackBar(typeExec.name, typeExec.id)">supprimer</button>
+                   </mat-menu>
+     </tr>  
+ 
+  </table>
+ 
+  <button mat-flat-button class="btn" id="deleteBtn" *ngIf = "selectedItems.length" (click) = "openDeleteSnackBar()">
+           <mat-icon>delete</mat-icon> &nbsp; supprimer &nbsp;
+       </button>
+ 

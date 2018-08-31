@@ -8,7 +8,7 @@ table{
      float: right;
      border-radius: 20px;
     font-family: 'Roboto light';
-    margin-right:5%
+    margin-right:3%
  }
 
  #deleteBtn{
@@ -33,21 +33,20 @@ table{
 
  .HeadName{
     flex-grow: 1;
-    max-width: 304px;
+    max-width: 28%;
     cursor: context-menu;
  }
 
 header{
     background: #F6F6F6;
-    height: 45px;
-    width: 96.3%;
-    padding-left: 3.7%;
+    height: 50px;
+    padding-left: 53px;
     align-items: center;
     display: flex;
  }
 
  mat-list-item {
-    padding-left : 2%;
+    padding-left : 33px;
     font-family: 'Roboto regular';
     border-bottom: lightgray 1px solid;
  }

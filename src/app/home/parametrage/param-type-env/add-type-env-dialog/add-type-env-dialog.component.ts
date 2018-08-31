@@ -13,6 +13,8 @@ import { Component, Output, EventEmitter, Inject, OnInit } from '@angular/core';
 export class AddTypeEnvDialogComponent implements OnInit{
 
   @Output() add: EventEmitter<ParamTypeEnvironnement> = new EventEmitter();
+  @Output() closed: EventEmitter<any> = new EventEmitter();
+
   familleEnvs$: Observable<RefFamilleEnvironnement[]> = this.familleEnvService.gets();
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: ParamTypeEnvironnement[], private familleEnvService :RefFamilleEnvService) { }
@@ -32,5 +34,10 @@ export class AddTypeEnvDialogComponent implements OnInit{
   isUnique(type: string)
   {
     return this.data.filter(it => it.name == type).length ? false: true;
+  }
+
+  close()
+  {
+    this.closed.emit();
   }
 }

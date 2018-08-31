@@ -53,3 +53,16 @@
 form input{
    color: #202c5f;
 }
+
+.title{
+  color: #202c5f;
+  font-family: 'Roboto regular';
+  font-size: 13pt;
+  font-weight: bold;
+  padding-left: 4%;
+}
+
+.dismissBtn{
+  float: right;
+  margin-right: 5%;
+}

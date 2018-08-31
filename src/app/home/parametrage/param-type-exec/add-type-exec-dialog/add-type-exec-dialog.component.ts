@@ -9,6 +9,7 @@ import { Component,  Output, EventEmitter, Inject } from '@angular/core';
 export class AddTypeExecDialogComponent {
 
   @Output() add: EventEmitter<ParamTypeExecutionProjet> = new EventEmitter();
+  @Output() closed: EventEmitter<any> = new EventEmitter();
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: ParamTypeExecutionProjet[]) { }
   typeExec = new ParamTypeExecutionProjet();
@@ -21,5 +22,10 @@ export class AddTypeExecDialogComponent {
   isUnique(type: string)
   {
     return this.data.filter(it => it.name == type).length ? false: true;
+  }
+
+  close()
+  {
+    this.closed.emit();
   }
 }

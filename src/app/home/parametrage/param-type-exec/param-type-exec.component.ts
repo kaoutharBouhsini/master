@@ -13,6 +13,11 @@ import { UpdateTypeExecDialogComponent } from './update-type-exec-dialog/update-
 export class ParamTypeExecComponent implements OnInit {
 
   typeExecs: ParamTypeExecutionProjet[] = [];
+  selectedItems: ParamTypeExecutionProjet[] = [];
+  nOrder: boolean = true;
+  dOrder: boolean = false;
+  selectTout: boolean = false;
+
   constructor(private typeExecService: ParamTypeExecProjetService, public dialog: MatDialog, public snackBar: MatSnackBar) { }
 
   ngOnInit() {
@@ -30,6 +35,8 @@ export class ParamTypeExecComponent implements OnInit {
       this.store(typeExec);
       this.dialog.closeAll();
     });
+    dialogRef.componentInstance.closed.subscribe(() => dialogRef.close());
+
   }
 
   store(typeExec: ParamTypeExecutionProjet) {
@@ -65,10 +72,62 @@ export class ParamTypeExecComponent implements OnInit {
       console.log('Update event ! - ' + typeExec.name);
       this.dialog.closeAll();
     });
+    dialogRef.componentInstance.closed.subscribe(() => dialogRef.close());
+
   }
 
   update(typeExec: ParamTypeExecutionProjet) {
     this.typeExecService.update(typeExec.id, typeExec).subscribe();
+  }
+
+  sortByName() {
+    this.nOrder = !this.nOrder;
+    this.typeExecs = this.typeExecs.sort((a: ParamTypeExecutionProjet, b: ParamTypeExecutionProjet) => {
+      return this.nOrder ? ((a.name > b.name) ? 1 : -1) : ((a.name < b.name) ? 1 : -1);
+    })
+  }
+  sortByDescription() {
+    this.dOrder = !this.dOrder;
+    this.typeExecs = this.typeExecs.sort((a: ParamTypeExecutionProjet, b: ParamTypeExecutionProjet) => {
+      return this.dOrder ? ((a.description > b.description) ? 1 : -1) : ((a.description < b.description) ? 1 : -1);
+    })
+  }
+
+  select(typeExec: ParamTypeExecutionProjet) {
+    if (!this.selectedItems.includes(typeExec))
+      this.selectedItems.push(typeExec);
+    else {
+      let index = this.selectedItems.indexOf(typeExec);
+      console.log('index : ' + index);
+      this.selectedItems.splice(index, 1);
+      this.selectTout = false;
+    }
+    console.log(this.selectedItems);
+  }
+
+  selectAll() {
+    this.selectedItems = [];
+    if (this.selectTout)
+    {
+      this.selectedItems = [];
+      this.typeExecs.map((it) => this.selectedItems.push(it));
+    }    
+
+   // console.log(this.selectedItems);
+  }
+
+  isSelected(typeExec: ParamTypeExecutionProjet){
+    return this.selectedItems.includes(typeExec)
+  }
+
+  openDeleteSnackBar(){
+    let snackbarRef = this.snackBar.open("Confirmez la suppression de éléments selectionnés ", "Oui", {
+      duration: 5000,
+    });
+    snackbarRef.onAction().subscribe(() => {
+      this.selectedItems.map ( (it) => this.delete(it.id));
+      this.selectedItems = [];
+    });
   }
 
 }

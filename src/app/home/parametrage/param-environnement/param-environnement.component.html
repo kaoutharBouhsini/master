@@ -1,0 +1,73 @@
+ <table>
+   <tr class="head">
+     <td class = "col1">
+        <mat-checkbox   (change)="selectAll();" [(ngModel)] = "selectTout"></mat-checkbox>
+        <span class="headItem" (click) = "sortByName()" style="margin-left: 35px;">
+            <span>Environnement </span>
+            &nbsp;
+            <mat-icon>unfold_more</mat-icon>
+        </span>
+     </td>
+
+     <td class="col2">
+        <span class="headItem" (click) = "sortByType()" >
+            <span> Type D'environnement </span>
+            &nbsp;
+          <mat-icon>unfold_more</mat-icon>
+          </span>
+     </td>
+     <td class="col2">
+        <span class="headItem" (click) = "sortByFamille()" >
+            <span> Famille D'environnement </span>
+            &nbsp;
+          <mat-icon>unfold_more</mat-icon>
+          </span>
+     </td>
+     <td class="col3">
+        <span class="headItem" (click) = "sortByDescription()">
+            <span> Description </span>
+            &nbsp;
+          <mat-icon>unfold_more</mat-icon>
+        </span>
+     </td>
+     <td class="col4">
+        <button mat-flat-button id="addBtn" class="btn" (click)="openDialog();">
+            <mat-icon>add</mat-icon> &nbsp; ajouter &nbsp;
+            </button>
+     </td>
+   </tr>
+              <!-- let i = last" [ngClass]="{'notLast':!i}"> -->
+  <tr class="list_item" *ngFor="let env of envs;" style="font-size: 16px;">
+                  <td class = "col1">
+                      <mat-checkbox (change) = "select(env)" [checked]="isSelected(env)">
+                          <h3  class="name"> {{env.libelle}} </h3>
+                      </mat-checkbox>
+                  </td>
+                  <td class = "col2">
+                      <span class="description">  {{env.paramTypeEnvironnement?.name}} </span>
+                  </td>
+
+                  <td>
+                      <span class="description"> {{env.paramTypeEnvironnement?.refFamilleEnvironnement?.name}} </span>
+                  </td>
+
+                  <td>
+                      <span class="col3" class="description">  {{env.description!!}} </span>
+                  </td>
+
+                  <td class = "col4">
+                      <button mat-icon-button [matMenuTriggerFor]="menu" class="opIcon">
+                          <mat-icon>more_vert</mat-icon>
+                        </button>
+                  </td>
+                  <mat-menu #menu="matMenu" >
+                      <button mat-menu-item (click) = "openUpdateDialog(env)" >modifier</button>
+                      <button mat-menu-item (click) = "openSnackBar(env.libelle, env.id)">supprimer</button>
+                  </mat-menu>
+    </tr>  
+
+ </table>
+
+ <button mat-flat-button class="btn" id="deleteBtn" *ngIf = "selectedItems.length" (click) = "openDeleteSnackBar()">
+          <mat-icon>delete</mat-icon> &nbsp; supprimer &nbsp;
+      </button>

@@ -1,15 +1,14 @@
 <div class="header">
-  <button mat-mini-fab class="icon_btn">
-      <mat-icon>attach_money</mat-icon>
+    <span style="vertical-align: middle" class="title">AJOUTER UNE FAMILLE D'ENVIRONNEMENT</span>
+    <button mat-icon-button class="dismissBtn" (click)="close()">
+       <mat-icon>close</mat-icon>
     </button>
-    &nbsp; 
-    <span style="vertical-align: middle">AJOUTER UNE FAMILLE</span>
 </div>
 <div mat-dialog-content class="content">
   <form class="add-form" #addForm = "ngForm" (ngSubmit) = "onSubmit()">
     <br>
       <mat-form-field class="add-full-width">
-        <input matInput placeholder="Intitulé de l'entité" [(ngModel)] = "famille.name" name="name" #name="ngModel" required>
+        <input matInput placeholder="Intitulé de la famille" [(ngModel)] = "famille.name" name="name" #name="ngModel" required>
         <mat-error *ngIf="name.invalid">
           Ce champs est <strong>important</strong>
         </mat-error>

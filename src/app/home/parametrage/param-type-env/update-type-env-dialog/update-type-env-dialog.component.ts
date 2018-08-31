@@ -13,6 +13,8 @@ import { ParamTypeEnvironnement } from '../../../../beans/param_type_environneme
 export class UpdateTypeEnvDialogComponent implements OnInit{
 
   @Output() update: EventEmitter<ParamTypeEnvironnement> = new EventEmitter();
+  @Output() closed: EventEmitter<any> = new EventEmitter();
+
   familleEnvs$: Observable<RefFamilleEnvironnement[]> = this.familleEnvService.gets();
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: ParamTypeEnvironnement, private familleEnvService :RefFamilleEnvService) {}
@@ -28,4 +30,8 @@ export class UpdateTypeEnvDialogComponent implements OnInit{
     console.log('event emitted');
   }
 
+  close()
+  {
+    this.closed.emit();
+  }
 }

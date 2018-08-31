@@ -35,6 +35,8 @@ export class FamilleEnvComponent implements OnInit {
       this.store(famille);
       this.dialog.closeAll();
     });
+
+    dialogRef.componentInstance.closed.subscribe(() => dialogRef.close());
   }
 
   store(famille: RefFamilleEnvironnement) {
@@ -70,12 +72,17 @@ export class FamilleEnvComponent implements OnInit {
       console.log('Update event ! - ' + famille.name);
       this.dialog.closeAll();
     });
+    
+    dialogRef.componentInstance.closed.subscribe(() => dialogRef.close());
+
   }
 
   update(famille: RefFamilleEnvironnement) {
     this.RefFamilleEnvService.update(famille.id, famille).subscribe();
   }
 
+
+  //  *******************************
   sortByName() {
     this.nOrder = !this.nOrder;
     this.familles = this.familles.sort((a: RefFamilleEnvironnement, b: RefFamilleEnvironnement) => {

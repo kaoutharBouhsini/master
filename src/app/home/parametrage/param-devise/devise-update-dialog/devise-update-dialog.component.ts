@@ -10,11 +10,17 @@ import { ParamDeviseProjet } from '../../../../beans/param_devise_projet';
 export class DeviseUpdateDialogComponent{
 
   @Output() update: EventEmitter<ParamDeviseProjet> = new EventEmitter();
+  @Output() closed: EventEmitter<any> = new EventEmitter();
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: ParamDeviseProjet) {}
 
   onSubmit() {
     this.update.emit(this.data);
     console.log('event emitted');
+  }
+
+  close()
+  {
+    this.closed.emit();
   }
 }

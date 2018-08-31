@@ -4,5 +4,6 @@ export class Environment{
     id: number;
     code: number;
     libelle: string;
-    typeEnvironnement: ParamTypeEnvironnement;
+    paramTypeEnvironnement: ParamTypeEnvironnement;
+    description: string;
 }

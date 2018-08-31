@@ -9,11 +9,17 @@ import { MAT_DIALOG_DATA } from '../../../../../../node_modules/@angular/materia
 export class UpdateFamilleDialogComponent {
 
   @Output() update: EventEmitter<RefFamilleEnvironnement> = new EventEmitter();
+  @Output() closed: EventEmitter<any> = new EventEmitter();
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: RefFamilleEnvironnement) {}
 
   onSubmit() {
     this.update.emit(this.data);
     console.log('event emitted');
+  }
+
+  close()
+  {
+    this.closed.emit();
   }
 }

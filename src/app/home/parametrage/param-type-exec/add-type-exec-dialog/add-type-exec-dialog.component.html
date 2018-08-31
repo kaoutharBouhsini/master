@@ -1,9 +1,8 @@
 <div class="header">
-  <button mat-mini-fab class="icon_btn">
-      <mat-icon>extension</mat-icon>
+    <span style="vertical-align: middle" class="title">AJOUTER UN TYPE D'EXECUTION</span>
+    <button mat-icon-button class="dismissBtn" (click)="close()">
+       <mat-icon>close</mat-icon>
     </button>
-    &nbsp; 
-    <span style="vertical-align: middle">AJOUTER UN TYPE D'EXECUTION</span>
 </div>
 <div mat-dialog-content class="content">
   <form class="add-form" #addForm = "ngForm" (ngSubmit) = "onSubmit()">
@@ -17,6 +16,9 @@
           Ce champs doit être <strong>unique</strong>
         </mat-hint>
       </mat-form-field>
+      <mat-form-field class="add-full-width">
+          <textarea matInput placeholder="Description" style="resize: none" name="description" [(ngModel)] = "typeExec.description"></textarea>
+        </mat-form-field>
       <br>
       <button [type]="addForm.valid && isUnique(name.value)?'submit':'button'" mat-flat-button id="addBtn">Ajouter</button>
     </form>

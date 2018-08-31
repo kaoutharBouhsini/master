@@ -1,0 +1,72 @@
+table{
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#addBtn{
+   float: right;
+   border-radius: 20px;
+  font-family: 'Roboto light';
+  margin-right:3%
+}
+
+#deleteBtn{
+  margin : 1% 0% 1% 42%;
+}
+
+.btn{
+  background:linear-gradient(to right, #213f99 0%,#202c5f 100%);
+  color: white;
+  align-self: center;
+}
+
+h3.name{
+  color: #2c4675;
+  font-family: 'Roboto light';
+  font-size: 12pt;
+}
+
+.headItem{
+  cursor: context-menu;
+}
+
+
+.head{
+  background: #F6F6F6;
+  height: 50px;
+  align-items: center;
+}
+
+.list_item {
+  font-family: 'Roboto regular';
+  border-bottom: lightgray 1px solid;
+}
+
+span.description{
+   color: #6f7889;
+   width: 100%;
+}
+
+.opIcon{
+  color: #2c4675
+}
+::ng-deep .mat-expansion-panel-body{
+  padding: 0px;
+}
+
+span mat-icon{
+  font-size: 14px;
+  font-weight: bolder;
+}
+
+.col1{
+  padding-left: 53px;
+}
+.col4{
+  text-align: end;
+  padding-right: 25px;
+}
+
+mat-checkbox *{
+  padding-left: 35px;
+}

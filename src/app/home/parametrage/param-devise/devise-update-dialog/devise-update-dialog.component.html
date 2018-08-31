@@ -1,9 +1,8 @@
 <div class="header">
-  <button mat-mini-fab class="icon_btn">
-      <mat-icon>attach_money</mat-icon>
+    <span style="vertical-align: middle" class="title">MODIFIER UNE DEVISE</span>
+    <button mat-icon-button class="dismissBtn" (click)="close()">
+       <mat-icon>close</mat-icon>
     </button>
-    &nbsp; 
-    <span style="vertical-align: middle">MODIFICATION</span>
 </div>
 <div mat-dialog-content class="content">
   <form class="add-form" #addForm = "ngForm" (ngSubmit) = "onSubmit()">

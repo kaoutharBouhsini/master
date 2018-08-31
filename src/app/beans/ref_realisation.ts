@@ -1,5 +1,5 @@
 export class RefRealisation{
     id: number;
-    code: string;
+    description: string;
     name: string;
 }

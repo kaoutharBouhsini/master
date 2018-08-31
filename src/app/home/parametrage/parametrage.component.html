@@ -1,38 +1,4 @@
 <section>
-  <!--<mat-tab-group>
-        <mat-tab label="Devise des projets"> 
-          <app-param-devise></app-param-devise>
-        </mat-tab>
-        <mat-tab label="Entités Collaborateurs/Projets"> 
-          <app-param-entite></app-param-entite>
-        </mat-tab>
-        <mat-tab label="Secteurs d'activités"> 
-          <app-param-secteurs></app-param-secteurs>  
-        </mat-tab>
-        <mat-tab label="Famille d'environements">
-          <app-famille-env></app-famille-env>
-      </mat-tab>
-        <mat-tab label="Types d'environement">
-            <app-param-type-env></app-param-type-env>
-        </mat-tab>
-        <mat-tab label="Types d'exécution">
-          <app-param-type-exec></app-param-type-exec>
-        </mat-tab>
-        <mat-tab label="Sexes">
-          <app-param-sexe></app-param-sexe>
-        </mat-tab>   
-        <mat-tab label="Situation Familiale">
-          <app-param-situation-familiale></app-param-situation-familiale>
-        </mat-tab>
-        <mat-tab label="Statut Collaborateur">
-          <app-statut-collaborateur></app-statut-collaborateur>
-        </mat-tab>
-        <mat-tab label="Statut Projet">
-          <app-statut-projet></app-statut-projet>
-        </mat-tab>
-      </mat-tab-group>
-
-    -->
   <span class="section_title">GESTION REFERENTIEL</span>
   <br>
   <br>
@@ -43,140 +9,147 @@
 
         <mat-accordion>
           <!-- (opened)="panelOpenState = true" (closed)="panelOpenState = false"> -->
-          <mat-expansion-panel id = "familleEnv" (opened)="panelFEOpenState = true" (closed)="panelFEOpenState = false">
+          <mat-expansion-panel id="familleEnv" (opened)="panelFEOpenState = true" (closed)="panelFEOpenState = false">
             <mat-expansion-panel-header>
-              <mat-panel-title [ngClass] = "{'panelOpened' : panelFEOpenState}">
+              <mat-panel-title [ngClass]="{'panelOpened' : panelFEOpenState}">
                 FAMILLE D'ENVIRONNEMENT
               </mat-panel-title>
-
             </mat-expansion-panel-header>
-              <app-famille-env></app-famille-env>
+            <app-famille-env></app-famille-env>
           </mat-expansion-panel>
           <div class="separator"></div>
 
-          <mat-expansion-panel id ="typeEnv" (opened)="panelTEOpenState = true" (closed)="panelTEOpenState = false">
+          <mat-expansion-panel id="typeEnv" (opened)="panelTEOpenState = true" (closed)="panelTEOpenState = false">
             <mat-expansion-panel-header>
-              <mat-panel-title [ngClass] = "{'panelOpened' : panelTEOpenState}">
+              <mat-panel-title [ngClass]="{'panelOpened' : panelTEOpenState}">
                 TYPE D'ENVIRONNEMENT
               </mat-panel-title>
-
             </mat-expansion-panel-header>
-            <p>I'm visible because I am open</p>
+            <app-param-type-env></app-param-type-env>
           </mat-expansion-panel>
           <div class="separator"></div>
 
           <mat-expansion-panel id="environement" (opened)="panelEOpenState = true" (closed)="panelEOpenState = false">
             <mat-expansion-panel-header>
-              <mat-panel-title [ngClass] = "{'panelOpened' : panelEOpenState}">
+              <mat-panel-title [ngClass]="{'panelOpened' : panelEOpenState}">
                 ELEMENT D'ENVIRONNEMENT
               </mat-panel-title>
-
             </mat-expansion-panel-header>
-            <p>I'm visible because I am open</p>
+            <app-param-environnement></app-param-environnement>
           </mat-expansion-panel>
           <div class="separator"></div>
 
           <mat-expansion-panel id="typeExec" (opened)="panelTEpenState = true" (closed)="panelTEpenState = false">
             <mat-expansion-panel-header>
-              <mat-panel-title [ngClass] = "{'panelOpened' : panelTEpenState}">
+              <mat-panel-title [ngClass]="{'panelOpened' : panelTEpenState}">
                 TYPE D'EXECUTION
               </mat-panel-title>
-
             </mat-expansion-panel-header>
-            <p>I'm visible because I am open</p>
+            <app-param-type-exec></app-param-type-exec>
           </mat-expansion-panel>
           <div class="separator"></div>
 
           <mat-expansion-panel id="realisation" (opened)="panelREpenState = true" (closed)="panelREpenState = false">
             <mat-expansion-panel-header>
-              <mat-panel-title [ngClass] = "{'panelOpened' : panelREpenState}">
+              <mat-panel-title [ngClass]="{'panelOpened' : panelREpenState}">
                 REALISATION
               </mat-panel-title>
 
             </mat-expansion-panel-header>
-            <p>I'm visible because I am open</p>
+            <app-param-realisation></app-param-realisation>
           </mat-expansion-panel>
           <div class="separator"></div>
 
-          <mat-expansion-panel  id="statutProjet" (opened)="panelSPpenState = true" (closed)="panelSPpenState = false">
+          <mat-expansion-panel id="statutProjet" (opened)="panelSPpenState = true" (closed)="panelSPpenState = false">
             <mat-expansion-panel-header>
-              <mat-panel-title [ngClass] = "{'panelOpened' : panelSPpenState}">
+              <mat-panel-title [ngClass]="{'panelOpened' : panelSPpenState}">
                 STATUT PROJET
               </mat-panel-title>
 
             </mat-expansion-panel-header>
-            <p>I'm visible because I am open</p>
+            <app-statut-projet></app-statut-projet>
           </mat-expansion-panel>
           <div class="separator"></div>
 
-          <mat-expansion-panel id ="piecesJ" (opened)="panelPJpenState = true" (closed)="panelPJpenState = false">
+          <mat-expansion-panel id="piecesJ" (opened)="panelPJpenState = true" (closed)="panelPJpenState = false">
             <mat-expansion-panel-header>
-              <mat-panel-title [ngClass] = "{'panelOpened' : panelPJpenState}">
-                PIECES JOINTES
+              <mat-panel-title [ngClass]="{'panelOpened' : panelPJpenState}">
+                FAMILLE PIECES JOINTES
               </mat-panel-title>
 
             </mat-expansion-panel-header>
-            <p>I'm visible because I am open</p>
+            <app-param-famille-pj></app-param-famille-pj>
           </mat-expansion-panel>
           <div class="separator"></div>
 
-          <mat-expansion-panel id = "documentation" (opened)="panelDOCpenState = true" (closed)="panelDOCpenState = false">
+          <mat-expansion-panel id="documentation" (opened)="panelDOCpenState = true" (closed)="panelDOCpenState = false">
             <mat-expansion-panel-header>
-              <mat-panel-title [ngClass] = "{'panelOpened' : panelDOCpenState}">
-                DOCUMENTATION
+              <mat-panel-title [ngClass]="{'panelOpened' : panelDOCpenState}">
+                FAMILLE DOCUMENTATION
               </mat-panel-title>
 
             </mat-expansion-panel-header>
-            <p>I'm visible because I am open</p>
+            <app-param-famille-documentation></app-param-famille-documentation>
           </mat-expansion-panel>
           <div class="separator"></div>
 
           <mat-expansion-panel id="role" (opened)="panelROLEpenState = true" (closed)="panelROLEpenState = false">
             <mat-expansion-panel-header>
-              <mat-panel-title [ngClass] = "{'panelOpened' : panelROLEpenState}">
+              <mat-panel-title [ngClass]="{'panelOpened' : panelROLEpenState}">
                 ROLE
               </mat-panel-title>
 
             </mat-expansion-panel-header>
-            <p>I'm visible because I am open</p>
+            <app-param-role></app-param-role>
+          </mat-expansion-panel>
+          <div class="separator"></div>
+
+          <mat-expansion-panel id="role" (opened)="panelROLEpenState = true" (closed)="panelROLEpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title [ngClass]="{'panelOpened' : panelROLEpenState}">
+                TACHE
+              </mat-panel-title>
+
+            </mat-expansion-panel-header>
+            <app-taches></app-taches>
           </mat-expansion-panel>
           <div class="separator"></div>
 
           <mat-expansion-panel id="roleTache" (opened)="panelROLETACHEpenState = true" (closed)="panelROLETACHEpenState = false">
             <mat-expansion-panel-header>
-              <mat-panel-title [ngClass] = "{'panelOpened' : panelROLETACHEpenState}">
+              <mat-panel-title [ngClass]="{'panelOpened' : panelROLETACHEpenState}">
                 ROLE/TACHE
               </mat-panel-title>
 
             </mat-expansion-panel-header>
-            <p>I'm visible because I am open</p>
+            <app-role-taches></app-role-taches>
           </mat-expansion-panel>
           <div class="separator"></div>
 
           <mat-expansion-panel id="tags" (opened)="panelTAGSpenState = true" (closed)="panelTAGSpenState = false">
             <mat-expansion-panel-header>
-              <mat-panel-title [ngClass] = "{'panelOpened' : panelTAGSpenState}">
+              <mat-panel-title [ngClass]="{'panelOpened' : panelTAGSpenState}">
                 TAGS
               </mat-panel-title>
 
             </mat-expansion-panel-header>
-            <p>I'm visible because I am open</p>
+            <app-tags></app-tags>
           </mat-expansion-panel>
           <div class="separator"></div>
 
           <mat-expansion-panel id="devises" (opened)="paneDEVOpenState = true" (closed)="paneDEVOpenState = false">
-              <mat-expansion-panel-header>
-                <mat-panel-title [ngClass] = "{'panelOpened' : paneDEVOpenState}">
-                  DEVISES
-                </mat-panel-title>
-  
-              </mat-expansion-panel-header>
-              <p>I'm visible because I am open</p>
-            </mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title [ngClass]="{'panelOpened' : paneDEVOpenState}">
+                DEVISES
+              </mat-panel-title>
+
+            </mat-expansion-panel-header>
+            <app-param-devise></app-param-devise>
+          </mat-expansion-panel>
         </mat-accordion>
 
       </mat-tab>
-      <mat-tab label="Collaborateurs" >
+      <mat-tab label="Collaborateurs">
         <p>Ref Collab</p>
       </mat-tab>
       <mat-tab label="Autres">
@@ -186,51 +159,51 @@
   </div>
 
   <div class="navigation">
-    <a  (click) = "scrollTo('familleEnv')" matTooltip="Famille d'environements" matTooltipPosition="before">
+    <a (click)="scrollTo('familleEnv')" matTooltip="Famille d'environements" matTooltipPosition="before">
       <mat-icon>lens</mat-icon>
     </a>
     <br>
-    <a (click) = "scrollTo('typeEnv')" matTooltip="Types d'environements" matTooltipPosition="before">
+    <a (click)="scrollTo('typeEnv')" matTooltip="Types d'environements" matTooltipPosition="before">
       <mat-icon>lens</mat-icon>
     </a>
     <br>
-    <a (click) = "scrollTo('environement')" matTooltip="Environements" matTooltipPosition="before">
+    <a (click)="scrollTo('environement')" matTooltip="Environements" matTooltipPosition="before">
       <mat-icon>lens</mat-icon>
     </a>
     <br>
-    <a (click) = "scrollTo('typeExec')" matTooltip="Type d'exécution" matTooltipPosition="before">
+    <a (click)="scrollTo('typeExec')" matTooltip="Type d'exécution" matTooltipPosition="before">
       <mat-icon>lens</mat-icon>
     </a>
     <br>
-    <a (click) = "scrollTo('realisation')" matTooltip="Realisations" matTooltipPosition="before">
+    <a (click)="scrollTo('realisation')" matTooltip="Realisations" matTooltipPosition="before">
       <mat-icon>lens</mat-icon>
     </a>
     <br>
-    <a (click) = "scrollTo('statutProjet')" matTooltip="Statut Projet" matTooltipPosition="before">
+    <a (click)="scrollTo('statutProjet')" matTooltip="Statut Projet" matTooltipPosition="before">
       <mat-icon>lens</mat-icon>
     </a>
     <br>
-    <a (click) = "scrollTo('piecesJ')" matTooltip="Pièces Jointes" matTooltipPosition="before">
+    <a (click)="scrollTo('piecesJ')" matTooltip="Pièces Jointes" matTooltipPosition="before">
       <mat-icon>lens</mat-icon>
     </a>
     <br>
-    <a (click) = "scrollTo('documentation')" matTooltip="Documentation" matTooltipPosition="before">
+    <a (click)="scrollTo('documentation')" matTooltip="Documentation" matTooltipPosition="before">
       <mat-icon>lens</mat-icon>
     </a>
     <br>
-    <a (click) = "scrollTo('role')" matTooltip="Roles" matTooltipPosition="before">
+    <a (click)="scrollTo('role')" matTooltip="Roles" matTooltipPosition="before">
       <mat-icon>lens</mat-icon>
     </a>
     <br>
-    <a (click) = "scrollTo('roleTache')" matTooltip="Role/Taches" matTooltipPosition="before">
+    <a (click)="scrollTo('roleTache')" matTooltip="Role/Taches" matTooltipPosition="before">
       <mat-icon>lens</mat-icon>
     </a>
     <br>
-    <a  (click) = "scrollTo('tags')" matTooltip="Tags" matTooltipPosition="before">
+    <a (click)="scrollTo('tags')" matTooltip="Tags" matTooltipPosition="before">
       <mat-icon>lens</mat-icon>
     </a>
     <br>
-    <a   (click) = "scrollTo('devises')" matTooltip="Devises" matTooltipPosition="before">
+    <a (click)="scrollTo('devises')" matTooltip="Devises" matTooltipPosition="before">
       <mat-icon>lens</mat-icon>
     </a>
   </div>

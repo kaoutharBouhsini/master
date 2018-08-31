@@ -12,8 +12,12 @@ import { UpdateStatutProjetDialogComponent } from './update-statut-projet-dialog
 })
 export class StatutProjetComponent implements OnInit {
 
-
   statuts: ParamStatutProjet[] = [];
+  selectedItems: ParamStatutProjet[] = [];
+  nOrder: boolean = true;
+  dOrder: boolean = false;
+  selectTout: boolean = false;
+
   constructor(private paramStatutProjetService: ParamStatutProjetService, public dialog: MatDialog, public snackBar: MatSnackBar) { }
 
   ngOnInit() {
@@ -31,6 +35,8 @@ export class StatutProjetComponent implements OnInit {
       this.store(statut);
       this.dialog.closeAll();
     });
+    dialogRef.componentInstance.closed.subscribe(() => dialogRef.close());
+
   }
 
   store(statut: ParamStatutProjet) {
@@ -66,10 +72,62 @@ export class StatutProjetComponent implements OnInit {
       console.log('Update event ! - ' + statut.name);
       this.dialog.closeAll();
     });
+    dialogRef.componentInstance.closed.subscribe(() => dialogRef.close());
+
   }
 
   update(statut: ParamStatutProjet) {
     this.paramStatutProjetService.update(statut.id, statut).subscribe();
+  }
+
+  sortByName() {
+    this.nOrder = !this.nOrder;
+    this.statuts = this.statuts.sort((a: ParamStatutProjet, b: ParamStatutProjet) => {
+      return this.nOrder ? ((a.name > b.name) ? 1 : -1) : ((a.name < b.name) ? 1 : -1);
+    })
+  }
+  sortByDescription() {
+    this.dOrder = !this.dOrder;
+    this.statuts = this.statuts.sort((a: ParamStatutProjet, b: ParamStatutProjet) => {
+      return this.dOrder ? ((a.description > b.description) ? 1 : -1) : ((a.description < b.description) ? 1 : -1);
+    })
+  }
+
+  select(statut: ParamStatutProjet) {
+    if (!this.selectedItems.includes(statut))
+      this.selectedItems.push(statut);
+    else {
+      let index = this.selectedItems.indexOf(statut);
+      console.log('index : ' + index);
+      this.selectedItems.splice(index, 1);
+      this.selectTout = false;
+    }
+    console.log(this.selectedItems);
+  }
+
+  selectAll() {
+    this.selectedItems = [];
+    if (this.selectTout)
+    {
+      this.selectedItems = [];
+      this.statuts.map((it) => this.selectedItems.push(it));
+    }    
+
+   // console.log(this.selectedItems);
+  }
+
+  isSelected(statut: ParamStatutProjet){
+    return this.selectedItems.includes(statut)
+  }
+
+  openDeleteSnackBar(){
+    let snackbarRef = this.snackBar.open("Confirmez la suppression de éléments selectionnés ", "Oui", {
+      duration: 5000,
+    });
+    snackbarRef.onAction().subscribe(() => {
+      this.selectedItems.map ( (it) => this.delete(it.id));
+      this.selectedItems = [];
+    });
   }
 
 }

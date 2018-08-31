@@ -9,6 +9,7 @@ import { ParamStatutProjet } from '../../../../beans/param_statut_projet';
 })
 export class AddStatutProjetDialogComponent {
   @Output() add: EventEmitter<ParamStatutProjet> = new EventEmitter();
+  @Output() closed: EventEmitter<any> = new EventEmitter();
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: ParamStatutProjet[]) { }
   statut = new ParamStatutProjet();
@@ -21,5 +22,9 @@ export class AddStatutProjetDialogComponent {
   isUnique(statut: string)
   {
     return this.data.filter(it => it.name == statut).length ? false: true;
+  }
+  close()
+  {
+    this.closed.emit();
   }
 }

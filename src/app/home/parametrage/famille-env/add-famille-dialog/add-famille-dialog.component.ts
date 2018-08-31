@@ -9,6 +9,7 @@ import { Component, OnInit, Output, EventEmitter, Inject } from '@angular/core';
 })
 export class AddFamilleDialogComponent {
   @Output() add: EventEmitter<RefFamilleEnvironnement> = new EventEmitter();
+  @Output() closed: EventEmitter<any> = new EventEmitter();
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: RefFamilleEnvironnement[]) { }
   famille = new RefFamilleEnvironnement();
@@ -21,5 +22,10 @@ export class AddFamilleDialogComponent {
   isUnique(famille: string)
   {
     return this.data.filter(it => it.name == famille).length ? false: true;
+  }
+
+  close()
+  {
+    this.closed.emit();
   }
 }
