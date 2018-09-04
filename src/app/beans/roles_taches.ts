@@ -5,5 +5,5 @@ export class RolesTaches {
     id: number;
     rank: number;
     role: Role;
-    tache: Tache;
+    taches: Tache;
 }

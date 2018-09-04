@@ -1,0 +1,27 @@
+<div class="header">
+  <span style="vertical-align: middle" class="title">MODIFIER UN SEXE</span>
+  <button mat-icon-button class="dismissBtn" (click)="close()">
+     <mat-icon>close</mat-icon>
+  </button>
+</div>
+<div mat-dialog-content class="content">
+<form class="add-form" #addForm = "ngForm" (ngSubmit) = "onSubmit()">
+  <br>
+    <mat-form-field class="add-full-width">
+      <input matInput placeholder="Libellé du sexe" [(ngModel)] = "data.libelle" name="name" #name="ngModel" required>
+      <mat-error *ngIf="name.invalid">
+        Ce champs est <strong>important</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="add-full-width">
+        <textarea matInput placeholder="Description" style="resize: none" name="description" [(ngModel)] = "data.description"></textarea>
+      </mat-form-field>
+    <br>
+    <button [type]="addForm.valid?'submit':'button'"  mat-flat-button id="addBtn">Modifier</button>
+  </form>
+  <br>
+  <!--
+  <div class="footer">
+  </div>
+  -->
+</div>

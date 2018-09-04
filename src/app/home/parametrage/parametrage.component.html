@@ -150,7 +150,83 @@
 
       </mat-tab>
       <mat-tab label="Collaborateurs">
-        <p>Ref Collab</p>
+        <!--param collaborateurs-->
+        <div class="separator"></div>
+
+        <mat-accordion>
+          <!-- (opened)="panelOpenState = true" (closed)="panelOpenState = false"> -->
+          <mat-expansion-panel id="familleEnv" (opened)="panelFEOpenState = true" (closed)="panelFEOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title [ngClass]="{'panelOpened' : panelFEOpenState}">
+                SITUATION FAMILIALE
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-param-situation-familiale></app-param-situation-familiale>
+          </mat-expansion-panel>
+          <div class="separator"></div>
+
+          <mat-expansion-panel id="typeEnv" (opened)="panelTEOpenState = true" (closed)="panelTEOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title [ngClass]="{'panelOpened' : panelTEOpenState}">
+                SEXE
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-param-sexe></app-param-sexe>
+          </mat-expansion-panel>
+          <div class="separator"></div>
+
+          <mat-expansion-panel id="environement" (opened)="panelEOpenState = true" (closed)="panelEOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title [ngClass]="{'panelOpened' : panelEOpenState}">
+                ENTITE
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-param-entite></app-param-entite>
+          </mat-expansion-panel>
+          <div class="separator"></div>
+
+          <mat-expansion-panel id="typeExec" (opened)="panelTEpenState = true" (closed)="panelTEpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title [ngClass]="{'panelOpened' : panelTEpenState}">
+                STATUT COLLABORATEUR
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-statut-collaborateur></app-statut-collaborateur>
+          </mat-expansion-panel>
+          <div class="separator"></div>
+
+          <mat-expansion-panel id="typeExec" (opened)="panelTEpenState = true" (closed)="panelTEpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title [ngClass]="{'panelOpened' : panelTEpenState}">
+                FONCTION RH
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-param-type-exec></app-param-type-exec>
+          </mat-expansion-panel>
+          <div class="separator"></div>
+
+          <mat-expansion-panel id="typeExec" (opened)="panelTEpenState = true" (closed)="panelTEpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title [ngClass]="{'panelOpened' : panelTEpenState}">
+                ETABLISSEMENT
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-param-type-exec></app-param-type-exec>
+          </mat-expansion-panel>
+          <div class="separator"></div>
+
+          <mat-expansion-panel id="typeExec" (opened)="panelTEpenState = true" (closed)="panelTEpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title [ngClass]="{'panelOpened' : panelTEpenState}">
+                NIVEAU D'ETUDES
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-param-type-exec></app-param-type-exec>
+          </mat-expansion-panel>
+          <div class="separator"></div>
+
+        </mat-accordion>
+
       </mat-tab>
       <mat-tab label="Autres">
         <p>Ref Autres</p>

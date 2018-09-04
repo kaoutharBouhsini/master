@@ -1,0 +1,32 @@
+<div class="header">
+  <span style="vertical-align: middle" class="title">MODIFIER LES TACHES D'UN ROLE</span>
+  <button mat-icon-button class="dismissBtn" (click)="close()">
+     <mat-icon>close</mat-icon>
+  </button>
+</div>
+<div mat-dialog-content class="content">
+      <mat-list>
+          <h3 matSubheader>Tâches : </h3>
+          <mat-list-item *ngFor="let it of getSortedList(); let fin = last; let debut = first;">
+             <h4 matLine>{{it.taches!!.name}}</h4>
+             <button mat-icon-button class="list_btn" (click)="rangUp(it)" [disabled] = "debut">
+                <mat-icon>keyboard_arrow_up</mat-icon>
+             </button>
+             <button mat-icon-button class="list_btn" (click)="rangDown(it)" [disabled] = "fin">
+                <mat-icon>keyboard_arrow_down</mat-icon>
+             </button>
+             <button mat-icon-button class="list_btn" (click)="delete(it)">
+                <mat-icon>close</mat-icon>
+             </button>
+             <mat-divider></mat-divider>
+          </mat-list-item>    
+       </mat-list>
+
+    <br>
+    <button  mat-flat-button id="addBtn" (click) = "enregistrer()">enregistrer</button>
+
+    <!--
+    <div class="footer">
+    </div>
+    -->
+</div>

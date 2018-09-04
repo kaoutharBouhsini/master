@@ -1,0 +1,54 @@
+<table>
+  <tr class="head">
+    <td class = "col1">
+       <mat-checkbox   (change)="selectAll();" [(ngModel)] = "selectTout"></mat-checkbox>
+       <span class="headItem" (click) = "sortByName()" style="margin-left: 35px;">
+           <span>Rôle </span>
+           &nbsp;
+           <mat-icon>unfold_more</mat-icon>
+       </span>
+    </td>
+
+    <td class="col2" colspan="2">
+       <span class="headItem" >
+           <span> Tâches </span>
+        </span>
+    </td>
+
+    <td class="col4">
+      
+       <button mat-flat-button id="addBtn" class="btn" (click)="openDialog();">
+           <mat-icon>add</mat-icon> &nbsp; ajouter &nbsp;
+    </button>
+      
+    </td>
+  </tr>
+             <!-- let i = last" [ngClass]="{'notLast':!i}"> -->
+
+ <tr class="list_item"  *ngFor="let role of getRoles();" style="font-size: 16px;">
+                 <td class = "col1" *ngIf="getRoles()!=null">
+                     <mat-checkbox (change) = "select(role)" [checked]="isSelected(role)">
+                         <h3  class="name"> {{role.name}} </h3>
+                     </mat-checkbox>
+                 </td>
+                 <td class = "col2" colspan="2" >
+                     <span class="description">
+                       <p *ngFor="let rtache of getTachesByRole(role.id)">{{rtache.taches.name}}</p>
+                     </span>
+                 </td>
+                 <td class = "col4" >
+                     <button mat-icon-button [matMenuTriggerFor]="menu" class="opIcon">
+                         <mat-icon>more_vert</mat-icon>
+                       </button>
+                 </td>
+                 <mat-menu #menu="matMenu" >
+                     <button mat-menu-item  (click) = "openUpdateDialog(getTachesByRole(role.id))" >modifier</button>
+                     <button mat-menu-item (click) = "openSnackBar(role.name, role.id)">supprimer</button>
+                 </mat-menu>
+   </tr>  
+
+</table>
+
+<button mat-flat-button class="btn" id="deleteBtn" *ngIf = "selectedItems.length" (click) = "openDeleteSnackBar()">
+         <mat-icon>delete</mat-icon> &nbsp; supprimer &nbsp;
+     </button>

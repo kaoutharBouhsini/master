@@ -1,0 +1,37 @@
+<div class="header">
+  <span style="vertical-align: middle" class="title">AJOUTER DES TACHES A UN ROLE</span>
+  <button mat-icon-button class="dismissBtn" (click)="close()">
+     <mat-icon>close</mat-icon>
+  </button>
+</div>
+<div mat-dialog-content class="content">
+  <form class="add-form" #addForm = "ngForm" (ngSubmit) = "onSubmit()">
+    <br>
+      <mat-form-field class="add-full-width">
+        <mat-label>Rôle</mat-label>
+        <mat-select  [(ngModel)]="role.id" name="roleInput" #roleInput="ngModel" (selectionChange)="onChange()" required>
+          <mat-option *ngFor = "let role of roles$ | async" value="{{role.id}}" >{{role.name}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="roleInput.invalid">
+          Ce champs est <strong>important</strong>
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="add-full-width">
+        <mat-select placeholder="Tâches" name="taches" #tasks [disabled]="!roleInput.value" multiple [formControl]="tachesCtrl" required>
+          <mat-option *ngFor="let tache of taches$|async" [value]="tache" [disabled]="roleInput.value? (isExist(roleInput.value, tache.id)? true: false) : false">{{tache.name}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="!tasks.value">
+          Ce champs est <strong>important</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <br>
+      <button [type]="addForm.valid && tasks.value?'submit':'button'" mat-flat-button id="addBtn">Ajouter</button>
+    </form>
+    <br>
+    <!--
+    <div class="footer">
+    </div>
+    -->
+</div>
